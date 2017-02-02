@@ -7,9 +7,9 @@
  *
  * Code generation for model "ctrl_student_HIL".
  *
- * Model version              : 1.121
+ * Model version              : 1.134
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Wed Feb 01 20:50:45 2017
+ * C source code generated on : Thu Feb 02 17:20:05 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -814,6 +814,7 @@ typedef struct {
   real_T PosYRight;                    /* '<S2>/PosYRight' */
   real_T PosXRight;                    /* '<S2>/PosXRight' */
   real_T R2_continuous;                /* '<S2>/R2_continuous' */
+  real_T Gain;                         /* '<S2>/Gain' */
   real_T ArrowUp;                      /* '<S2>/ArrowUp' */
   real_T u_vsp;                        /* '<S2>/MATLAB Function' */
   real_T u_bt;                         /* '<S2>/MATLAB Function' */
@@ -852,6 +853,7 @@ typedef struct {
   real_T omega_VSP1_DWORK1;            /* '<S2>/omega_VSP1' */
   real_T omega_VSP2_DWORK1;            /* '<S2>/omega_VSP2' */
   real_T u_BT_DWORK1;                  /* '<S2>/u_BT' */
+  real_T Combine_DWORK1;               /* '<S2>/Combine' */
   real_T X_d_DWORK1;                   /* '<S3>/X_d' */
   real_T N_d_DWORK1;                   /* '<S3>/N_d' */
   real_T Y_d_DWORK1;                   /* '<S3>/Y_d' */
@@ -881,6 +883,7 @@ typedef struct {
   uint8_T omega_VSP1_DWORK2[17];       /* '<S2>/omega_VSP1' */
   uint8_T omega_VSP2_DWORK2[17];       /* '<S2>/omega_VSP2' */
   uint8_T u_BT_DWORK2[17];             /* '<S2>/u_BT' */
+  uint8_T Combine_DWORK2[17];          /* '<S2>/Combine' */
   uint8_T X_d_DWORK2[17];              /* '<S3>/X_d' */
   uint8_T N_d_DWORK2[17];              /* '<S3>/N_d' */
   uint8_T Y_d_DWORK2[17];              /* '<S3>/Y_d' */
@@ -1270,6 +1273,24 @@ struct P_ctrl_student_HIL_T_ {
                                         */
   real_T u_BT_P6;                      /* Expression: btype
                                         * Referenced by: '<S2>/u_BT'
+                                        */
+  real_T Combine_P1;                   /* Expression: width
+                                        * Referenced by: '<S2>/Combine'
+                                        */
+  real_T Combine_P2;                   /* Expression: dtype
+                                        * Referenced by: '<S2>/Combine'
+                                        */
+  real_T Combine_P3;                   /* Expression: portnum
+                                        * Referenced by: '<S2>/Combine'
+                                        */
+  real_T Combine_P4;                   /* Expression: stime
+                                        * Referenced by: '<S2>/Combine'
+                                        */
+  real_T Combine_P5;                   /* Expression: stype
+                                        * Referenced by: '<S2>/Combine'
+                                        */
+  real_T Combine_P6;                   /* Expression: btype
+                                        * Referenced by: '<S2>/Combine'
                                         */
   real_T X_d_P1;                       /* Expression: width
                                         * Referenced by: '<S3>/X_d'

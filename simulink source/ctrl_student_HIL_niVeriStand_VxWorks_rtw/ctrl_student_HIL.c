@@ -7,9 +7,9 @@
  *
  * Code generation for model "ctrl_student_HIL".
  *
- * Model version              : 1.121
+ * Model version              : 1.134
  * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
- * C source code generated on : Wed Feb 01 20:50:45 2017
+ * C source code generated on : Thu Feb 02 17:20:05 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -176,19 +176,22 @@ static void ctrl_student_HIL_output(void)
 
   /* End of MATLAB Function: '<S5>/MATLAB Function1' */
 
+  /* Gain: '<S2>/Gain' incorporates:
+   *  Sum: '<S2>/Sum'
+   */
+  ctrl_student_HIL_B.Gain = (ctrl_student_HIL_B.L2_continuous -
+    ctrl_student_HIL_B.R2_continuous) * ctrl_student_HIL_P.Gain_Gain;
+
   /* MATLAB Function: '<S2>/MATLAB Function' incorporates:
-   *  Gain: '<S2>/Gain'
    *  Memory: '<S2>/Memory'
    *  Memory: '<S2>/Memory1'
-   *  Sum: '<S2>/Sum'
    */
   /* MATLAB Function 'joystick/MATLAB Function': '<S12>:1' */
   /* '<S12>:1:7' */
   /* '<S12>:1:9' */
   u_idx_1 = ctrl_student_HIL_B.PosXRight - ctrl_student_HIL_B.PosYRight * 0.0;
-  u_idx_2 = (((ctrl_student_HIL_B.L2_continuous -
-               ctrl_student_HIL_B.R2_continuous) * ctrl_student_HIL_P.Gain_Gain
-              - ctrl_student_HIL_B.PosYRight * 0.0) - u_idx_1 * -0.4575) / 0.845;
+  u_idx_2 = ((ctrl_student_HIL_B.Gain - ctrl_student_HIL_B.PosYRight * 0.0) -
+             u_idx_1 * -0.4575) / 0.845;
   u_idx_1 -= u_idx_2;
   u_idx_0 = (ctrl_student_HIL_B.PosYRight - u_idx_2 * 0.0) - u_idx_1 * 0.0;
 
@@ -196,11 +199,11 @@ static void ctrl_student_HIL_output(void)
   if ((ctrl_student_HIL_B.ArrowUp > 0.5) &&
       (ctrl_student_HIL_DW.Memory1_PreviousInput != ctrl_student_HIL_B.ArrowUp))
   {
+    /* '<S12>:1:12' */
     /* '<S12>:1:13' */
-    /* '<S12>:1:14' */
     mem_out = -ctrl_student_HIL_DW.Memory_PreviousInput;
   } else {
-    /* '<S12>:1:16' */
+    /* '<S12>:1:15' */
     mem_out = ctrl_student_HIL_DW.Memory_PreviousInput;
   }
 
@@ -209,31 +212,31 @@ static void ctrl_student_HIL_output(void)
   /*  1 is the simple thrust allocation */
   switch ((int32_T)mem_out) {
    case 1:
-    /* '<S12>:1:25' */
+    /* '<S12>:1:23' */
     z = sqrt(u_idx_0 * u_idx_0 + u_idx_1 * u_idx_1) / 2.33;
 
-    /* '<S12>:1:26' */
+    /* '<S12>:1:24' */
     u_bt = u_idx_2 / 2.629;
 
-    /* '<S12>:1:27' */
-    u_idx_2 = rt_atan2d_snf(u_idx_0, u_idx_1);
+    /* '<S12>:1:25' */
+    u_idx_2 = rt_atan2d_snf(u_idx_1, -u_idx_0);
 
-    /* If limits are violated u = 0 */
+    /*  If limits are violated u = 0 */
     if (fabs(z) > 1.0) {
-      /* '<S12>:1:31' */
-      /* '<S12>:1:32' */
+      /* '<S12>:1:27' */
+      /* '<S12>:1:28' */
       z = 0.0;
     }
 
     if (fabs(u_bt) > 1.0) {
-      /* '<S12>:1:34' */
-      /* '<S12>:1:35' */
+      /* '<S12>:1:30' */
+      /* '<S12>:1:31' */
       u_bt = 0.0;
     }
     break;
 
    case -1:
-    /* '<S12>:1:39' */
+    /* '<S12>:1:34' */
     u_idx_2 = fabs(ctrl_student_HIL_B.PosYRight);
     if ((1.165 >= u_idx_2) || rtIsNaN(u_idx_2)) {
       u_idx_2 = 1.165;
@@ -241,7 +244,7 @@ static void ctrl_student_HIL_output(void)
 
     z = u_idx_2 / 1.165;
 
-    /* '<S12>:1:40' */
+    /* '<S12>:1:35' */
     u_idx_2 = fabs(ctrl_student_HIL_B.PosXRight);
     if ((2.629 >= u_idx_2) || rtIsNaN(u_idx_2)) {
       u_idx_2 = 2.629;
@@ -259,17 +262,17 @@ static void ctrl_student_HIL_output(void)
 
     u_bt = u_idx_2 / 2.629 * u_idx_1;
     if (ctrl_student_HIL_B.PosYRight < 0.0) {
-      /* '<S12>:1:42' */
-      /* '<S12>:1:43' */
+      /* '<S12>:1:36' */
+      /* '<S12>:1:37' */
       u_idx_2 = 3.1415926535897931;
     } else {
-      /* '<S12>:1:45' */
+      /* '<S12>:1:39' */
       u_idx_2 = 0.0;
     }
     break;
 
    default:
-    /* '<S12>:1:50' */
+    /* '<S12>:1:42' */
     u_idx_2 = fabs(ctrl_student_HIL_B.PosYRight);
     if ((1.165 >= u_idx_2) || rtIsNaN(u_idx_2)) {
       u_idx_2 = 1.165;
@@ -287,7 +290,7 @@ static void ctrl_student_HIL_output(void)
 
     z = u_idx_2 / 1.165 * u_idx_1;
 
-    /* '<S12>:1:51' */
+    /* '<S12>:1:43' */
     u_idx_2 = fabs(ctrl_student_HIL_B.PosXRight);
     if ((2.629 >= u_idx_2) || rtIsNaN(u_idx_2)) {
       u_idx_2 = 2.629;
@@ -305,7 +308,7 @@ static void ctrl_student_HIL_output(void)
 
     u_bt = u_idx_2 / 2.629 * u_idx_1;
 
-    /* '<S12>:1:52' */
+    /* '<S12>:1:44' */
     u_idx_2 = 0.0;
     break;
   }
@@ -606,9 +609,9 @@ RT_MODEL_ctrl_student_HIL_T *ctrl_student_HIL(void)
   ctrl_student_HIL_M->Sizes.numU = (0);/* Number of model inputs */
   ctrl_student_HIL_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   ctrl_student_HIL_M->Sizes.numSampTimes = (1);/* Number of sample times */
-  ctrl_student_HIL_M->Sizes.numBlocks = (55);/* Number of blocks */
-  ctrl_student_HIL_M->Sizes.numBlockIO = (19);/* Number of block outputs */
-  ctrl_student_HIL_M->Sizes.numBlockPrms = (169);/* Sum of parameter "widths" */
+  ctrl_student_HIL_M->Sizes.numBlocks = (56);/* Number of blocks */
+  ctrl_student_HIL_M->Sizes.numBlockIO = (20);/* Number of block outputs */
+  ctrl_student_HIL_M->Sizes.numBlockPrms = (175);/* Sum of parameter "widths" */
   return ctrl_student_HIL_M;
 }
 
@@ -871,7 +874,7 @@ long NumInputPorts(void)
   return 11;
 }
 
-double ni_extout[14];
+double ni_extout[15];
 void SetExternalOutputs(double* data, int* TaskSampleHit)
 {
   int index = 0, count = 0;
@@ -921,6 +924,13 @@ void SetExternalOutputs(double* data, int* TaskSampleHit)
   // joystick/u_BT: Virtual Signal # 0
   if (TaskSampleHit[0]) {              // sample and hold
     ni_extout[index++] = NIRT_GetValueByDataType(&ctrl_student_HIL_B.u_bt,0,0,0);
+  } else {
+    index += 1;
+  }
+
+  // joystick/Combine: Virtual Signal # 0
+  if (TaskSampleHit[0]) {              // sample and hold
+    ni_extout[index++] = NIRT_GetValueByDataType(&ctrl_student_HIL_B.Gain,0,0,0);
   } else {
     index += 1;
   }
@@ -987,7 +997,7 @@ void SetExternalOutputs(double* data, int* TaskSampleHit)
 
 long NumOutputPorts(void)
 {
-  return 14;
+  return 15;
 }
 
 int NI_InitExternalOutputs()
@@ -1014,6 +1024,9 @@ int NI_InitExternalOutputs()
 
   // joystick/u_BT: Virtual Signal # 0
   ni_extout[index++] = NIRT_GetValueByDataType(&ctrl_student_HIL_B.u_bt,0,0,0);
+
+  // joystick/Combine: Virtual Signal # 0
+  ni_extout[index++] = NIRT_GetValueByDataType(&ctrl_student_HIL_B.Gain,0,0,0);
 
   // tau to CSE mocell (only use for HIL testing)/X_d: Virtual Signal # 0
   ni_extout[index++] = NIRT_GetValueByDataType(&ctrl_student_HIL_B.PosXRight,0,0,
@@ -1174,62 +1187,65 @@ static NI_Signal NI_SigList[] DataSection(".NIVS.siglist") =
     (B_ctrl_student_HIL_T, R2_continuous)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2,
     18, 0 },
 
-  { 10, "ctrl_student_hil/joystick/ArrowUp", 0, "", offsetof
-    (B_ctrl_student_HIL_T, ArrowUp)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 20,
+  { 10, "ctrl_student_hil/joystick/Gain", 0, "", offsetof(B_ctrl_student_HIL_T,
+    Gain)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 20, 0 },
+
+  { 11, "ctrl_student_hil/joystick/ArrowUp", 0, "", offsetof
+    (B_ctrl_student_HIL_T, ArrowUp)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 22,
     0 },
 
-  { 11, "ctrl_student_hil/joystick/MATLAB Function", 0, "u_vsp", offsetof
-    (B_ctrl_student_HIL_T, u_vsp)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 22, 0
+  { 12, "ctrl_student_hil/joystick/MATLAB Function", 0, "u_vsp", offsetof
+    (B_ctrl_student_HIL_T, u_vsp)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 24, 0
   },
 
-  { 12, "ctrl_student_hil/joystick/MATLAB Function", 1, "u_bt", offsetof
-    (B_ctrl_student_HIL_T, u_bt)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 24, 0 },
+  { 13, "ctrl_student_hil/joystick/MATLAB Function", 1, "u_bt", offsetof
+    (B_ctrl_student_HIL_T, u_bt)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 26, 0 },
 
-  { 13, "ctrl_student_hil/joystick/MATLAB Function", 2, "alpha", offsetof
-    (B_ctrl_student_HIL_T, alpha)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 26, 0
+  { 14, "ctrl_student_hil/joystick/MATLAB Function", 2, "alpha", offsetof
+    (B_ctrl_student_HIL_T, alpha)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 28, 0
   },
 
-  { 14, "ctrl_student_hil/joystick/MATLAB Function", 3, "omega", offsetof
-    (B_ctrl_student_HIL_T, omega)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 28, 0
+  { 15, "ctrl_student_hil/joystick/MATLAB Function", 3, "omega", offsetof
+    (B_ctrl_student_HIL_T, omega)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 30, 0
   },
 
-  { 15, "ctrl_student_hil/joystick/MATLAB Function", 4, "mem_out", offsetof
-    (B_ctrl_student_HIL_T, mem_out)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 30,
+  { 16, "ctrl_student_hil/joystick/MATLAB Function", 4, "mem_out", offsetof
+    (B_ctrl_student_HIL_T, mem_out)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 32,
     0 },
 
-  { 16, "ctrl_student_hil/joystick/MATLAB Function", 5, "hold_out", offsetof
-    (B_ctrl_student_HIL_T, hold_out)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 32,
+  { 17, "ctrl_student_hil/joystick/MATLAB Function", 5, "hold_out", offsetof
+    (B_ctrl_student_HIL_T, hold_out)+0*sizeof(real_T), BLOCKIO_SIG, 0, 1, 2, 34,
     0 },
-
-  { 17, "ctrl_student_hil/Noise generator/Sample & hold/MATLAB Function1", 0,
-    "output(1,1)", offsetof(B_ctrl_student_HIL_T, output)+0*sizeof(real_T),
-    BLOCKIO_SIG, 17, 1, 2, 34, 0 },
 
   { 18, "ctrl_student_hil/Noise generator/Sample & hold/MATLAB Function1", 0,
-    "output(1,2)", offsetof(B_ctrl_student_HIL_T, output)+1*sizeof(real_T),
+    "output(1,1)", offsetof(B_ctrl_student_HIL_T, output)+0*sizeof(real_T),
     BLOCKIO_SIG, 17, 1, 2, 36, 0 },
 
   { 19, "ctrl_student_hil/Noise generator/Sample & hold/MATLAB Function1", 0,
-    "output(1,3)", offsetof(B_ctrl_student_HIL_T, output)+2*sizeof(real_T),
+    "output(1,2)", offsetof(B_ctrl_student_HIL_T, output)+1*sizeof(real_T),
     BLOCKIO_SIG, 17, 1, 2, 38, 0 },
 
-  { 20, "ctrl_student_hil/Noise generator/Downsamplesignal/MATLAB Function", 0,
+  { 20, "ctrl_student_hil/Noise generator/Sample & hold/MATLAB Function1", 0,
+    "output(1,3)", offsetof(B_ctrl_student_HIL_T, output)+2*sizeof(real_T),
+    BLOCKIO_SIG, 17, 1, 2, 40, 0 },
+
+  { 21, "ctrl_student_hil/Noise generator/Downsamplesignal/MATLAB Function", 0,
     "count", offsetof(B_ctrl_student_HIL_T, count)+0*sizeof(real_T), BLOCKIO_SIG,
-    0, 1, 2, 40, 0 },
+    0, 1, 2, 42, 0 },
 
   { -1, "", -1, "", 0, 0, 0 }
 };
 
-static int NI_SigListSize DataSection(".NIVS.siglistsize") = 21;
+static int NI_SigListSize DataSection(".NIVS.siglistsize") = 22;
 static int NI_VirtualBlockSources[1][1];
 static int NI_VirtualBlockOffsets[1][1];
 static int NI_VirtualBlockLengths[1][1];
 static int NI_SigDimList[] DataSection(".NIVS.sigdimlist") =
 {
   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
 
-static long NI_ExtListSize DataSection(".NIVS.extlistsize") = 25;
+static long NI_ExtListSize DataSection(".NIVS.extlistsize") = 26;
 static NI_ExternalIO NI_ExtList[] DataSection(".NIVS.extlist") =
 {
   { 0, "y_in", 0, EXT_IN, 1, 1, 1 },
@@ -1268,22 +1284,25 @@ static NI_ExternalIO NI_ExtList[] DataSection(".NIVS.extlist") =
 
   { 6, "joystick/u_BT", 0, EXT_OUT, 1, 1, 1 },
 
-  { 7, "tau to CSE mocell (only use for HIL testing)/X_d", 0, EXT_OUT, 1, 1, 1 },
+  { 7, "joystick/Combine", 0, EXT_OUT, 1, 1, 1 },
 
-  { 8, "tau to CSE mocell (only use for HIL testing)/N_d", 0, EXT_OUT, 1, 1, 1 },
+  { 8, "tau to CSE mocell (only use for HIL testing)/X_d", 0, EXT_OUT, 1, 1, 1 },
 
-  { 9, "tau to CSE mocell (only use for HIL testing)/Y_d", 0, EXT_OUT, 1, 1, 1 },
+  { 9, "tau to CSE mocell (only use for HIL testing)/N_d", 0, EXT_OUT, 1, 1, 1 },
 
-  { 10, "tau to CSE mocell (only use for HIL testing)/psi_0 ", 0, EXT_OUT, 1, 1,
+  { 10, "tau to CSE mocell (only use for HIL testing)/Y_d", 0, EXT_OUT, 1, 1, 1
+  },
+
+  { 11, "tau to CSE mocell (only use for HIL testing)/psi_0 ", 0, EXT_OUT, 1, 1,
     1 },
 
-  { 11, "tau to CSE mocell (only use for HIL testing)/x_0", 0, EXT_OUT, 1, 1, 1
+  { 12, "tau to CSE mocell (only use for HIL testing)/x_0", 0, EXT_OUT, 1, 1, 1
   },
 
-  { 12, "tau to CSE mocell (only use for HIL testing)/y_0", 0, EXT_OUT, 1, 1, 1
+  { 13, "tau to CSE mocell (only use for HIL testing)/y_0", 0, EXT_OUT, 1, 1, 1
   },
 
-  { 13, "tau to CSE mocell (only use for HIL testing)/integrator reset model", 0,
+  { 14, "tau to CSE mocell (only use for HIL testing)/integrator reset model", 0,
     EXT_OUT, 1, 1, 1 },
 
   { -1, "", 0, 0, 0, 0, 0 }
@@ -1302,8 +1321,8 @@ NI_Task NI_TaskList[] DataSection(".NIVS.tasklist") =
 int NI_NumTasks DataSection(".NIVS.numtasks") = 1;
 static char* NI_CompiledModelName DataSection(".NIVS.compiledmodelname") =
   "ctrl_student_hil";
-static char* NI_CompiledModelVersion = "1.121";
-static char* NI_CompiledModelDateTime = "Wed Feb 01 20:50:45 2017";
+static char* NI_CompiledModelVersion = "1.134";
+static char* NI_CompiledModelDateTime = "Thu Feb 02 17:20:05 2017";
 static char* NI_builder DataSection(".NIVS.builder") =
   "NI VeriStand 2014.0.0.82 (2014) RTW Build";
 static char* NI_BuilderVersion DataSection(".NIVS.builderversion") =
@@ -1865,7 +1884,7 @@ DLL_EXPORT long NIRT_GetSimState(long* numContStates, char* contStatesNames,
   if (numContStates && numDiscStates && numClockTicks) {
     if (*numContStates < 0 || *numDiscStates < 0 || *numClockTicks < 0) {
       *numContStates = 0;
-      *numDiscStates = 540;
+      *numDiscStates = 558;
       *numClockTicks = NUMST - TID01EQ;
       return NI_OK;
     }
@@ -1969,6 +1988,10 @@ DLL_EXPORT long NIRT_GetSimState(long* numContStates, char* contStatesNames,
     discStates[idx] = NIRT_GetValueByDataType(&ctrl_student_HIL_DW.u_BT_DWORK1,
       0, 0, 0);
     strcpy(discStatesNames + (idx++ * 100), "&ctrl_student_HIL_DW.u_BT_DWORK1");
+    discStates[idx] = NIRT_GetValueByDataType
+      (&ctrl_student_HIL_DW.Combine_DWORK1, 0, 0, 0);
+    strcpy(discStatesNames + (idx++ * 100),
+           "&ctrl_student_HIL_DW.Combine_DWORK1");
     discStates[idx] = NIRT_GetValueByDataType(&ctrl_student_HIL_DW.X_d_DWORK1, 0,
       0, 0);
     strcpy(discStatesNames + (idx++ * 100), "&ctrl_student_HIL_DW.X_d_DWORK1");
@@ -2125,6 +2148,13 @@ DLL_EXPORT long NIRT_GetSimState(long* numContStates, char* contStatesNames,
     }
 
     for (count = 0; count < 17; count++) {
+      discStates[idx] = NIRT_GetValueByDataType
+        (&ctrl_student_HIL_DW.Combine_DWORK2, count, 18, 0);
+      strcpy(discStatesNames + (idx++ * 100),
+             "&ctrl_student_HIL_DW.Combine_DWORK2");
+    }
+
+    for (count = 0; count < 17; count++) {
       discStates[idx] = NIRT_GetValueByDataType(&ctrl_student_HIL_DW.X_d_DWORK2,
         count, 18, 0);
       strcpy(discStatesNames + (idx++ * 100), "&ctrl_student_HIL_DW.X_d_DWORK2");
@@ -2251,6 +2281,8 @@ DLL_EXPORT long NIRT_SetSimState(double* contStates, double* discStates, long
       discStates[idx++], 0, 0);
     NIRT_SetValueByDataType(&ctrl_student_HIL_DW.u_BT_DWORK1, 0, discStates[idx
       ++], 0, 0);
+    NIRT_SetValueByDataType(&ctrl_student_HIL_DW.Combine_DWORK1, 0,
+      discStates[idx++], 0, 0);
     NIRT_SetValueByDataType(&ctrl_student_HIL_DW.X_d_DWORK1, 0, discStates[idx++],
       0, 0);
     NIRT_SetValueByDataType(&ctrl_student_HIL_DW.N_d_DWORK1, 0, discStates[idx++],
@@ -2360,6 +2392,11 @@ DLL_EXPORT long NIRT_SetSimState(double* contStates, double* discStates, long
 
     for (count = 0; count < 17; count++) {
       NIRT_SetValueByDataType(&ctrl_student_HIL_DW.u_BT_DWORK2, count,
+        discStates[idx++], 18, 0);
+    }
+
+    for (count = 0; count < 17; count++) {
+      NIRT_SetValueByDataType(&ctrl_student_HIL_DW.Combine_DWORK2, count,
         discStates[idx++], 18, 0);
     }
 
