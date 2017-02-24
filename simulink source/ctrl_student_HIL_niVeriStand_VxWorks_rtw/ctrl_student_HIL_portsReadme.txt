@@ -1,11 +1,12 @@
 	<portlist>
+<inport> id="-1"  name = "y_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "noise_power_p" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "noise_power_psi" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "y_in" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "x_in" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "psi_in" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "reset" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "noise" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "k_0" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "psi_in" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "x_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "u_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "r_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "v_in" width = "1" datatype = "0"</inport>
@@ -19,6 +20,12 @@
 <outport> id = "-1" name = "x" width = "1" datatype = "18"</outport>
 <outport> id = "-1" name = "y" width = "1" datatype = "18"</outport>
 <outport> id = "-1" name = "psi" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "v_newModel" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "u_newModel" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "r_newModel" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "psi_newModel1" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "x_newModel1" width = "1" datatype = "18"</outport>
+<outport> id = "-1" name = "y_newModel1" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "joystick/u_VSP1" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "joystick/alpha_VSP2" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "joystick/alpha_VSP1" width = "1" datatype = "0"</outport>
