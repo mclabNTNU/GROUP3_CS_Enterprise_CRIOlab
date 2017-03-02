@@ -10,7 +10,7 @@
 				<String>CSE1</String>
 			</Property>
 			<Property Name="Version">
-				<String>1.0.0.156</String>
+				<String>1.0.0.160</String>
 			</Property>
 			<Property Name="Creator">
 				<String />
@@ -5197,10 +5197,10 @@
 									<Double>10000</Double>
 								</Property>
 								<Property Name="DLL Size">
-									<I32>181596</I32>
+									<I32>189660</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3571306104.6327152</Double>
+									<Double>3571309257.54887</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -5244,7 +5244,7 @@
 										<ForceDownload>false</ForceDownload>
 										<RTDestination>c:\ni-rt\system\ctrl_student_HIL.out</RTDestination>
 										<SupportedTarget>VxWorks</SupportedTarget>
-										<MD5>b24fcd756ab56c25716c319177093f9d</MD5>
+										<MD5>ac7acafce18b421e1c5a62e77d59617b</MD5>
 									</DependentFile>
 								</Property>
 								<Property Name="GlobalParameterScopes">
@@ -5621,7 +5621,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/X_d</String>
 											</Property>
 											<Property Name="Index">
-												<I32>18</I32>
+												<I32>24</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5636,7 +5636,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/N_d</String>
 											</Property>
 											<Property Name="Index">
-												<I32>19</I32>
+												<I32>25</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5651,7 +5651,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/Y_d</String>
 											</Property>
 											<Property Name="Index">
-												<I32>20</I32>
+												<I32>26</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5666,7 +5666,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/psi_0 </String>
 											</Property>
 											<Property Name="Index">
-												<I32>21</I32>
+												<I32>27</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5681,7 +5681,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/x_0</String>
 											</Property>
 											<Property Name="Index">
-												<I32>22</I32>
+												<I32>28</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5696,7 +5696,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/y_0</String>
 											</Property>
 											<Property Name="Index">
-												<I32>23</I32>
+												<I32>29</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5711,7 +5711,7 @@
 												<String>tau to CSE mocell (only use for HIL testing)/integrator reset model</String>
 											</Property>
 											<Property Name="Index">
-												<I32>24</I32>
+												<I32>30</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -5724,6 +5724,101 @@
 									<Description />
 									<Properties />
 									<Errors />
+								</Section>
+								<Section Name="DP Observer " TypeGUID="cbfdde93-6581-4b7c-83b8-e88484f25b2e">
+									<Description />
+									<Properties />
+									<Errors />
+									<Channel Name="x_hat" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /x_hat</String>
+											</Property>
+											<Property Name="Index">
+												<I32>18</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
+									<Channel Name="psi_hat" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /psi_hat</String>
+											</Property>
+											<Property Name="Index">
+												<I32>19</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
+									<Channel Name="y_hat" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /y_hat</String>
+											</Property>
+											<Property Name="Index">
+												<I32>20</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
+									<Channel Name="r_dot" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /r_dot</String>
+											</Property>
+											<Property Name="Index">
+												<I32>21</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
+									<Channel Name="u_dot" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /u_dot</String>
+											</Property>
+											<Property Name="Index">
+												<I32>22</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
+									<Channel Name="v_dot" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+										<Description />
+										<Properties>
+											<Property Name="Model Path">
+												<String>DP Observer /v_dot</String>
+											</Property>
+											<Property Name="Index">
+												<I32>23</I32>
+											</Property>
+										</Properties>
+										<Errors />
+										<DefaultValue>
+											<Elem>0</Elem>
+										</DefaultValue>
+									</Channel>
 								</Section>
 							</Section>
 							<Section Name="Parameters" TypeGUID="03D3BB0C-1485-13A6-56E10CEFF755E7D3">
