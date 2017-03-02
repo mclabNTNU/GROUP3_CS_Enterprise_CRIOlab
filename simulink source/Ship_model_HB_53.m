@@ -53,7 +53,7 @@ d_32_vr = -N_v - N_vv*abs(v) - N_vvv*v^2 - N_rv*abs(r);
 d_33_vr = -N_r - N_vr*abs(v) - N_rr*abs(r) - N_rrr*r^2;
 
 % The total damping matrix from the handbook page 53
-D_tot = [d_11_u 0 0; 0 d_22_vr 0; 0 d_32_vr d_33_vr];
+D= [d_11_u 0 0; 0 d_22_vr 0; 0 d_32_vr d_33_vr];
 
 % The simplified damping matrix we use in the model Task 1 Case B
 D_simp = d_11_u;
