@@ -1,10 +1,18 @@
 	<portlist>
+<inport> id="-1"  name = "Noise power pos" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "Noise poser head" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "y_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "x_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "psi_in" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "Enable noise" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "r_in" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "u_in" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "v_in" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "DP Observer /L1_diag" width = "3" datatype = "18"</inport>
 <inport> id="-1"  name = "DP Observer /L2_diag " width = "3" datatype = "18"</inport>
 <inport> id="-1"  name = "DP Observer /L3_diag" width = "3" datatype = "18"</inport>
+<inport> id="-1"  name = "DP Observer /b" width = "1" datatype = "0"</inport>
+<inport> id="-1"  name = "DP Observer /signal loss" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "joystick/L2_continuous" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "joystick/PosXRight" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "joystick/PosYRight" width = "1" datatype = "0"</inport>
@@ -17,11 +25,9 @@
 <inport> id="-1"  name = "joystick/ArrowUp" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "joystick/ArrowLeft" width = "1" datatype = "0"</inport>
 <inport> id="-1"  name = "joystick/ArrowRight" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "r_in" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "u_in" width = "1" datatype = "0"</inport>
-<inport> id="-1"  name = "v_in" width = "1" datatype = "0"</inport>
 <outport> id = "-1" name = "x_m" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "psi_m" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "y_m" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "DP Observer /x_hat" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "DP Observer /psi_hat" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "DP Observer /y_hat" width = "1" datatype = "17"</outport>
@@ -38,5 +44,4 @@
 <outport> id = "-1" name = "tau to CSE mocell (only use for HIL testing)/x_0" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "tau to CSE mocell (only use for HIL testing)/y_0" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "tau to CSE mocell (only use for HIL testing)/integrator reset model" width = "1" datatype = "0"</outport>
-<outport> id = "-1" name = "y_m" width = "1" datatype = "17"</outport>
 </portlist>
