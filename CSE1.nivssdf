@@ -10,7 +10,7 @@
 				<String>CSE1</String>
 			</Property>
 			<Property Name="Version">
-				<String>1.0.0.170</String>
+				<String>1.0.0.182</String>
 			</Property>
 			<Property Name="Creator">
 				<String />
@@ -97,7 +97,7 @@
 						<Double>15</Double>
 					</Property>
 					<Property Name="FPGAScanInterfaceMode">
-						<U16>0</U16>
+						<U16>1</U16>
 					</Property>
 					<Property Name="Timing Source Settings">
 						<U16>0</U16>
@@ -4951,7 +4951,7 @@
 												<I32>1</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/psi_0 " />
 											</Property>
 										</Properties>
 										<Errors />
@@ -4969,7 +4969,7 @@
 												<I32>2</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/x_0" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -4987,7 +4987,7 @@
 												<I32>3</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/y_0" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5010,7 +5010,7 @@
 												<I32>4</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/X_d" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5028,7 +5028,7 @@
 												<I32>5</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/Y_d" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5046,7 +5046,7 @@
 												<I32>6</I32>
 											</Property>
 											<Property Name="DataSource">
-												<DataSourceNode Channel="" />
+												<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/ctrl_student_HIL/Outports/tau to CSE mocell (only use for HIL testing)/N_d" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5063,9 +5063,6 @@
 										</Property>
 										<Property Name="Index">
 											<I32>0</I32>
-										</Property>
-										<Property Name="DataSource">
-											<DataSourceNode Channel="" />
 										</Property>
 									</Properties>
 									<Errors />
@@ -5200,7 +5197,7 @@
 									<I32>204936</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3571378196.866714</Double>
+									<Double>3573037349.626862</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -5244,7 +5241,7 @@
 										<ForceDownload>false</ForceDownload>
 										<RTDestination>c:\ni-rt\system\ctrl_student_HIL.out</RTDestination>
 										<SupportedTarget>VxWorks</SupportedTarget>
-										<MD5>e01ecb04b15855c16b3f92a358f59e44</MD5>
+										<MD5>055d8803228838e377b33fd39314cf9f</MD5>
 									</DependentFile>
 								</Property>
 								<Property Name="GlobalParameterScopes">
@@ -5409,6 +5406,9 @@
 											<Property Name="Index">
 												<I32>10</I32>
 											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/PosXLeft" />
+											</Property>
 										</Properties>
 										<Errors />
 										<DefaultValue>
@@ -5423,6 +5423,9 @@
 											</Property>
 											<Property Name="Index">
 												<I32>11</I32>
+											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/PosYLeft" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5439,6 +5442,9 @@
 											<Property Name="Index">
 												<I32>12</I32>
 											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/L1" />
+											</Property>
 										</Properties>
 										<Errors />
 										<DefaultValue>
@@ -5453,6 +5459,9 @@
 											</Property>
 											<Property Name="Index">
 												<I32>13</I32>
+											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/R1" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5469,6 +5478,9 @@
 											<Property Name="Index">
 												<I32>14</I32>
 											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/ArrowDown" />
+											</Property>
 										</Properties>
 										<Errors />
 										<DefaultValue>
@@ -5484,6 +5496,9 @@
 											<Property Name="Index">
 												<I32>16</I32>
 											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/ArrowLeft" />
+											</Property>
 										</Properties>
 										<Errors />
 										<DefaultValue>
@@ -5498,6 +5513,9 @@
 											</Property>
 											<Property Name="Index">
 												<I32>17</I32>
+											</Property>
+											<Property Name="DataSource">
+												<DataSourceNode Channel="Targets/Controller/Custom Devices/WL_Joystick/ArrowRight" />
 											</Property>
 										</Properties>
 										<Errors />
@@ -5724,6 +5742,9 @@
 										<Property Name="Index">
 											<I32>18</I32>
 										</Property>
+										<Property Name="DataSource">
+											<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/CSE1_HIL_tau/Outports/nu/r" />
+										</Property>
 									</Properties>
 									<Errors />
 									<DefaultValue>
@@ -5739,6 +5760,9 @@
 										<Property Name="Index">
 											<I32>19</I32>
 										</Property>
+										<Property Name="DataSource">
+											<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/CSE1_HIL_tau/Outports/nu/u" />
+										</Property>
 									</Properties>
 									<Errors />
 									<DefaultValue>
@@ -5753,6 +5777,9 @@
 										</Property>
 										<Property Name="Index">
 											<I32>20</I32>
+										</Property>
+										<Property Name="DataSource">
+											<DataSourceNode Channel="Targets/Controller/Simulation Models/Models/CSE1_HIL_tau/Outports/nu/v" />
 										</Property>
 									</Properties>
 									<Errors />
