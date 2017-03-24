@@ -56,7 +56,7 @@ BUILD_SUCCESS	= ... Created
 CPU             = PPC603
 
 MODEL           		:= ctrl_student_HIL
-MODULES         		:= NIVeriStand_main.c ctrl_student_HIL_data.c rtGetInf.c rtGetNaN.c rt_logging.c rt_nonfinite.c rt_zcfcn.c 
+MODULES         		:= NIVeriStand_main.c ctrl_student_HIL_data.c rtGetInf.c rtGetNaN.c rt_logging.c rt_nonfinite.c 
 MAKEFILE        		:= ctrl_student_HIL.mk
 MATLAB_ROOT     		:= C:\Program Files\MATLAB\R2015a
 ALT_MATLAB_ROOT 		:= C:\PROGRA~1\MATLAB\R2015a
@@ -67,7 +67,7 @@ S_FUNCTIONS_LIB 		:=
 SOLVER          		:= 
 NUMST           		:= 2
 TID01EQ         		:= 1
-NCSTATES        		:= 16
+NCSTATES        		:= 12
 BUILDARGS       		:=  NIDEBUG=0 NIOPT="Default" OPTS="" ISPROTECTINGMODEL=NOTPROTECTING
 MULTITASKING    		:= 0
 EXT_MODE        		:= 0
@@ -152,9 +152,8 @@ MATLAB_INCLUDES := $(MATLAB_INCLUDES) -I$(MATLAB_ROOT)\rtw\c\src\ext_mode\common
 # Additional file include paths
 
 
-MATLAB_INCLUDES := $(MATLAB_INCLUDES) -IC:\Users\MCLab\Documents\GitHub\GROUP3_CS_Enterprise_CRIOlab\ctrl_student_HIL_niVeriStand_VxWorks_rtw
-MATLAB_INCLUDES := $(MATLAB_INCLUDES) -IC:\Users\MCLab\Documents\GitHub\GROUP3_CS_Enterprise_CRIOlab
-MATLAB_INCLUDES := $(MATLAB_INCLUDES) -IC:\Users\MCLab\Documents\GitHub\GROUP3_CS_Enterprise_CRIOlab\SIMULI~1
+MATLAB_INCLUDES := $(MATLAB_INCLUDES) -IC:\Users\MCLab\DOCUME~1\GitHub\GROUP3~1\SIMULI~1\ctrl_student_HIL_niVeriStand_VxWorks_rtw
+MATLAB_INCLUDES := $(MATLAB_INCLUDES) -IC:\Users\MCLab\DOCUME~1\GitHub\GROUP3~1\SIMULI~1
 
 INCLUDE := -I$(RELATIVE_PATH_TO_ANCHOR) $(MATLAB_INCLUDES) $(MODELREF_INC_PATH) -I$(NIVERISTAND_ROOT)/ModelInterface/ $(COMPILER_INCLUDES) -I.
 ifneq "$(SHARED_SRC_DIR)" ""
