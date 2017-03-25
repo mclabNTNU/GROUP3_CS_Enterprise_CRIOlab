@@ -5,14 +5,14 @@ points = length(0:dt:time);
 K_p = diag([0.2, 0.2, 0.1]);
 mu = 0.1;
 P_d = [2  0; 
-       10 4];
+       -100 -40];
 U_ref = [(0:dt:time)' [zeros(floor(1*points/6),1);
                        ones(ceil(4*points/6),1)*0.1;
                        zeros(floor(1*points/6)+1,1)]];  % Case 1
 U_ref = 0.1;
 U_max = 2.5;
-r = [5; 3];
-C = [6; 0];
+r = [15,2.5];%r = [5; 3];
+C = [0,0]; %C = [6; 0];
 initial_eta = [1 0 pi/2]';
 initial_eta_2 = [6 5 0]';
 initial_eta_4 = [7 0 0]';
