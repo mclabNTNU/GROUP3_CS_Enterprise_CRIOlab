@@ -1,0 +1,605 @@
+%implements s7_b0_tzfle_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(6, 0)> %% rtb_Integrator_p
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+int_T iS;
+ZCEventType zcEvent;
+real_T eta_d_s[3];
+real_T multiplicant;
+real_T derivicant;
+real_T S[9];
+real_T R[9];
+real_T z_1[3];
+real_T diff[3];
+static const real_T a[9] = { 16.79, 0.0, 0.0, 0.0, 24.79, 0.55462499999999992, 0.0, 0.55462499999999992, 2.76 };
+static const int8_T b_a[9] = { 10, 0, 0, 0, 10, 0, 0, 0, 5 };
+static const real_T c_a[9] = { -0.2, -0.0, -0.0, -0.0, -0.2, -0.0, -0.0, -0.0, -0.1 };
+static const real_T limit[4] = { -20.0, -3.225, 20.0, 3.225 };
+real_T L2[9];
+real_T L3[9];
+static const real_T a_0[9] = { 0.059559261465157838, -0.0, 0.0, -0.0, 0.04052100686778741, -0.0081423733365488769, -0.0, -0.0081423733365488769, 0.36395498559871381 };
+static const real_T b_a_0[9] = { -4.088, -0.0, -0.0, -0.0, -68.211, -0.0788, -0.0, -0.0, -1.07 };
+real_T a_1;
+real_T rtb_TmpSignalConversionAtSFun_f[3];
+real_T rtb_TmpSignalConversionAtSFunct[3];
+static const int8_T tmp[2] = { 1, 2 };
+real_T R_0[3];
+real_T S_0[3];
+real_T R_1[3];
+real_T c_a_0[3];
+real_T a_2[3];
+int32_T i;
+real_T a_idx_0;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS7B0 = OpaqueTLCBlockFcn("Outputs", 7, 0, 0, 4)
+%assign tlcOutputsFcnOfS7B1 = OpaqueTLCBlockFcn("Outputs", 7, 1, 0, 4)
+%assign tlcOutputsFcnOfS7B2 = OpaqueTLCBlockFcn("Outputs", 7, 2, 0, 4)
+%assign tlcOutputsFcnOfS7B5 = OpaqueTLCBlockFcn("Outputs", 7, 5, 0, 4)
+%assign tlcOutputsFcnOfS7B6 = OpaqueTLCBlockFcn("Outputs", 7, 6, 0, 4)
+%assign tlcOutputsFcnOfS7B7 = OpaqueTLCBlockFcn("Outputs", 7, 7, 0, 4)
+%assign tlcOutputsFcnOfS7B9 = OpaqueTLCBlockFcn("Outputs", 7, 9, 0, 4)
+%assign tlcOutputsFcnOfS7B10 = OpaqueTLCBlockFcn("Outputs", 7, 10, 0, 4)
+%assign tlcOutputsFcnOfS7B11 = OpaqueTLCBlockFcn("Outputs", 7, 11, 0, 4)
+%assign tlcOutputsFcnOfS7B12 = OpaqueTLCBlockFcn("Outputs", 7, 12, 0, 4)
+%assign tlcOutputsFcnOfS7B13 = OpaqueTLCBlockFcn("Outputs", 7, 13, 0, 4)
+%assign tlcOutputsFcnOfS7B14 = OpaqueTLCBlockFcn("Outputs", 7, 14, 0, 4)
+%assign tlcOutputsFcnOfS7B15 = OpaqueTLCBlockFcn("Outputs", 7, 15, 0, 4)
+%assign tlcOutputsFcnOfS7B17 = OpaqueTLCBlockFcn("Outputs", 7, 17, 0, 4)
+%assign tlcOutputsFcnOfS7B19 = OpaqueTLCBlockFcn("Outputs", 7, 19, 0, 4)
+%assign tlcOutputsFcnOfS7B20 = OpaqueTLCBlockFcn("Outputs", 7, 20, 0, 4)
+%assign tlcOutputsFcnOfS7B21 = OpaqueTLCBlockFcn("Outputs", 7, 21, 0, 4)
+%assign tlcOutputsFcnOfS7B22 = OpaqueTLCBlockFcn("Outputs", 7, 22, 0, 4)
+%assign tlcOutputsFcnOfS7B23 = OpaqueTLCBlockFcn("Outputs", 7, 23, 0, 4)
+%assign tlcOutputsFcnOfS7B24 = OpaqueTLCBlockFcn("Outputs", 7, 24, 0, 4)
+%assign tlcOutputsFcnOfS7B25 = OpaqueTLCBlockFcn("Outputs", 7, 25, 0, 4)
+%assign tlcOutputsFcnOfS7B26 = OpaqueTLCBlockFcn("Outputs", 7, 26, 0, 4)
+%assign tlcOutputsFcnOfS7B27 = OpaqueTLCBlockFcn("Outputs", 7, 27, 0, 4)
+%assign tlcOutputsFcnOfS7B28 = OpaqueTLCBlockFcn("Outputs", 7, 28, 0, 4)
+%assign tlcOutputsFcnOfS7B30 = OpaqueTLCBlockFcn("Outputs", 7, 30, 0, 4)
+%assign tlcOutputsFcnOfS7B31 = OpaqueTLCBlockFcn("Outputs", 7, 31, 0, 4)
+%assign tlcOutputsFcnOfS7B33 = OpaqueTLCBlockFcn("Outputs", 7, 33, 0, 4)
+%assign tlcOutputsFcnOfS7B34 = OpaqueTLCBlockFcn("Outputs", 7, 34, 0, 4)
+%assign tlcOutputsFcnOfS7B35 = OpaqueTLCBlockFcn("Outputs", 7, 35, 0, 4)
+%assign tlcOutputsFcnOfS7B36 = OpaqueTLCBlockFcn("Outputs", 7, 36, 0, 4)
+%assign tlcOutputsFcnOfS7B38 = OpaqueTLCBlockFcn("Outputs", 7, 38, 0, 4)
+%assign tlcOutputsFcnOfS7B40 = OpaqueTLCBlockFcn("Outputs", 7, 40, 0, 4)
+%assign tlcOutputsFcnOfS7B42 = OpaqueTLCBlockFcn("Outputs", 7, 42, 0, 4)
+%assign tlcOutputsFcnOfS7B43 = OpaqueTLCBlockFcn("Outputs", 7, 43, 0, 4)
+%assign tlcOutputsFcnOfS7B44 = OpaqueTLCBlockFcn("Outputs", 7, 44, 0, 4)
+%assign tlcOutputsFcnOfS7B45 = OpaqueTLCBlockFcn("Outputs", 7, 45, 0, 4)
+%assign tlcOutputsFcnOfS7B46 = OpaqueTLCBlockFcn("Outputs", 7, 46, 0, 4)
+%assign tlcOutputsFcnOfS7B47 = OpaqueTLCBlockFcn("Outputs", 7, 47, 0, 4)
+%assign tlcOutputsFcnOfS7B48 = OpaqueTLCBlockFcn("Outputs", 7, 48, 0, 4)
+%assign tlcOutputsFcnOfS7B49 = OpaqueTLCBlockFcn("Outputs", 7, 49, 0, 4)
+%assign tlcOutputsFcnOfS7B50 = OpaqueTLCBlockFcn("Outputs", 7, 50, 0, 4)
+%assign tlcOutputsFcnOfS7B51 = OpaqueTLCBlockFcn("Outputs", 7, 51, 0, 4)
+%assign tlcOutputsFcnOfS7B52 = OpaqueTLCBlockFcn("Outputs", 7, 52, 0, 4)
+%assign tlcOutputsFcnOfS7B53 = OpaqueTLCBlockFcn("Outputs", 7, 53, 0, 4)
+%assign tlcOutputsFcnOfS7B54 = OpaqueTLCBlockFcn("Outputs", 7, 54, 0, 4)
+%assign tlcOutputsFcnOfS7B55 = OpaqueTLCBlockFcn("Outputs", 7, 55, 0, 4)
+%assign tlcOutputsFcnOfS7B56 = OpaqueTLCBlockFcn("Outputs", 7, 56, 0, 4)
+%<tlcOutputsFcnOfS7B0>\
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+    /* Memory: '<S3>/Memory' */
+    memcpy(&ctrl_student_HIL_B.Memory[0], &ctrl_student_HIL_DW.Memory_PreviousInput[0], 9U * sizeof(real_T));
+}
+%<tlcOutputsFcnOfS7B1>\
+%<tlcOutputsFcnOfS7B2>\
+/* MATLAB Function: '<S3>/MATLAB Function' incorporates:
+ *  SignalConversion: '<S10>/TmpSignal ConversionAt SFunction Inport1'
+ */
+/* MATLAB Function 'Dead reckoning/MATLAB Function': '<S10>:1' */
+/* '<S10>:1:2' */
+ctrl_student_HIL_B.dead_x = 0.0;
+/* '<S10>:1:5' */
+for (iS = 0; iS < 9; iS++) {
+    S[iS] = ctrl_student_HIL_B.Memory[iS];
+    ctrl_student_HIL_B.newmem[iS] = ctrl_student_HIL_B.Memory[iS];
+}
+/*  This value needs to be changed based on the iteration speed */
+if (ctrl_student_HIL_B.Memory[0] - floor(ctrl_student_HIL_B.Memory[0] / 50.0) * 50.0 == 0.0) {
+    /* '<S10>:1:9' */
+    /* '<S10>:1:10' */
+    S[6] = ctrl_student_HIL_B.Memory[3];
+    /* '<S10>:1:11' */
+    S[3] = ctrl_student_HIL_B.x_in;
+    /* '<S10>:1:12' */
+    S[0] = 1.0;
+}
+/* '<S10>:1:14' */
+ctrl_student_HIL_B.newmem[0] = S[0] + 1.0;
+if (S[3] == S[6]) {
+    /* '<S10>:1:15' */
+    /* '<S10>:1:16' */
+    ctrl_student_HIL_B.dead_x = 1.0;
+}
+/* End of MATLAB Function: '<S3>/MATLAB Function' */
+
+/* SecondOrderIntegrator: '<S3>/Integrator, Second-Order' */
+if (%<(LibIsMajorTimeStep())>) {
+    zcEvent = %<(SLibCG_SE(SLibCGIRZCFcn("RISING_ZERO_CROSSING", "ctrl_student_HIL_PrevZCX.IntegratorSecondOrder_Reset_ZCE", "ctrl_student_HIL_B.dead_x", 0)))>;
+    if (zcEvent != NO_ZCEVENT) {
+        ctrl_student_HIL_X.IntegratorSecondOrder_CSTATE[0] = ctrl_student_HIL_P.IntegratorSecondOrder_ICX;
+        ctrl_student_HIL_X.IntegratorSecondOrder_CSTATE[1] = ctrl_student_HIL_P.IntegratorSecondOrder_ICDXDT;
+        ctrl_student_HIL_DW.IntegratorSecondOrder_MODE = 0;
+        %<(RTMSetSolverNeedsReset())>;
+    }
+}
+/* End of SecondOrderIntegrator: '<S3>/Integrator, Second-Order' */
+
+/* SignalConversion: '<S11>/TmpSignal ConversionAt SFunction Inport1' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ */
+rtb_TmpSignalConversionAtSFun_f[0] = ctrl_student_HIL_B.x_in;
+rtb_TmpSignalConversionAtSFun_f[1] = ctrl_student_HIL_B.y_in;
+rtb_TmpSignalConversionAtSFun_f[2] = ctrl_student_HIL_B.psi_in;
+/* MATLAB Function 'Dead reckoning/MATLAB Function1': '<S11>:1' */
+/* '<S11>:1:7' */
+%<tlcOutputsFcnOfS7B5>\
+%<tlcOutputsFcnOfS7B6>\
+%<tlcOutputsFcnOfS7B7>\
+/* SignalConversion: '<S6>/TmpSignal ConversionAt SFunction Inport3' incorporates:
+ *  MATLAB Function: '<Root>/Transfer function'
+ */
+rtb_TmpSignalConversionAtSFunct[0] = ctrl_student_HIL_B.u_in;
+rtb_TmpSignalConversionAtSFunct[1] = ctrl_student_HIL_B.v_in;
+rtb_TmpSignalConversionAtSFunct[2] = ctrl_student_HIL_B.r_in;
+/* MATLAB Function: '<Root>/Transfer function' incorporates:
+ *  Integrator: '<Root>/Integrator'
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ *  SignalConversion: '<S11>/TmpSignal ConversionAt SFunction Inport1'
+ *  SignalConversion: '<S6>/TmpSignal ConversionAt SFunction Inport3'
+ */
+/* MATLAB Function 'Transfer function': '<S6>:1' */
+/* %<"\% Constants"> */
+/* %<"\% Parameters"> */
+/*  Rigid body and added mass */
+/*  y_g = 0.0; */
+/*  Max Values in Surge X, Sway Y and Yaw N */
+/* [N] */
+/* [Nm] */
+/*  Hydro surge, Hydro sway and Hydro Yaw Parameters */
+/*  NB! We don't need most of them for now, that why they are commented */
+/*  out, but don't remove them!! */
+/* '<S6>:1:30' */
+/* '<S6>:1:33' */
+/*  Matrices */
+/* '<S6>:1:40' */
+/*  I need a test values;  */
+/* '<S6>:1:48' */
+/* '<S6>:1:49' */
+/* '<S6>:1:50' */
+/* '<S6>:1:51' */
+/* '<S6>:1:52' */
+/*  The total damping matrix from the handbook page 53 */
+/* '<S6>:1:55' */
+/*         %<"\%\% Forward and backward on a straight line"> */
+/*         %<"\%\% Speed mapping"> */
+/* '<S6>:1:95' */
+/*         %<"\%\% Reference mapping"> */
+/*  These work, but go out of bounds below. */
+/* '<S6>:1:100' */
+multiplicant = sin(ctrl_student_HIL_X.Integrator_CSTATE);
+/* '<S6>:1:101' */
+derivicant = cos(ctrl_student_HIL_X.Integrator_CSTATE);
+/* '<S6>:1:102' */
+a_1 = sin(ctrl_student_HIL_X.Integrator_CSTATE);
+/* '<S6>:1:104' */
+/* '<S6>:1:105' */
+/* '<S6>:1:107' */
+/* '<S6>:1:108' */
+/* '<S6>:1:110' */
+/* '<S6>:1:111' */
+/* '<S6>:1:113' */
+ctrl_student_HIL_B.eta_d[0] = multiplicant * 8.0 / 2.0 + 4.0;
+ctrl_student_HIL_B.eta_d[1] = multiplicant * 4.0 / 2.0 + 2.0;
+ctrl_student_HIL_B.eta_d[2] = 0.46364760900080609;
+/* '<S6>:1:114' */
+eta_d_s[0] = derivicant * 8.0 / 2.0;
+eta_d_s[1] = derivicant * 4.0 / 2.0;
+eta_d_s[2] = 0.0;
+/* '<S6>:1:115' */
+/*         %<"\%\% Update law"> */
+/* '<S6>:1:118' */
+diff[0] = ctrl_student_HIL_B.x_in - ctrl_student_HIL_B.eta_d[0];
+diff[1] = ctrl_student_HIL_B.y_in - ctrl_student_HIL_B.eta_d[1];
+/* '<S6>:1:118' */
+/* '<S6>:1:221' */
+multiplicant = ((ctrl_student_HIL_B.psi_in - ctrl_student_HIL_B.eta_d[2]) + 3.1415926535897931) / 6.2831853071795862;
+if (fabs(multiplicant - %<(SLibCGCallSubFcn("rt_roundd_snf", ["multiplicant"], 0, 4, 2))>) <= 2.2204460492503131E-16 * fabs(multiplicant)) {
+    multiplicant = 0.0;
+} else {
+    multiplicant = (multiplicant - floor(multiplicant)) * 6.2831853071795862;
+}
+if (%<(SLibCGCallSubFcn("ctrl_student_HIL_norm", ["eta_d_s"], 0, 4, 0))> < 1.0E-5) {
+    /* '<S6>:1:120' */
+    /* '<S6>:1:121' */
+    multiplicant = 0.12649110640673517 - ((0.025 * -diff[0] + 0.025 * -diff[1]) + -(multiplicant - 3.1415926535897931) * 0.025) / 1.7320508075688772;
+} else {
+    /* '<S6>:1:123' */
+    multiplicant = 0.12649110640673517 - ((0.025 * -diff[0] * eta_d_s[0] + 0.025 * -diff[1] * eta_d_s[1]) + -(multiplicant - 3.1415926535897931) * 0.025 * 0.0) / %<(SLibCGCallSubFcn("ctrl_student_HIL_norm", ["eta_d_s"], 0, 4, 1))>;
+}
+/* %<"\% Control law"> */
+/*  Define z_1 and z_1_dot */
+/* '<S6>:1:198' */
+S[0] = 0.0;
+S[3] = -ctrl_student_HIL_B.r_in;
+S[6] = 0.0;
+S[1] = ctrl_student_HIL_B.r_in;
+S[4] = 0.0;
+S[7] = 0.0;
+S[2] = 0.0;
+S[5] = 0.0;
+S[8] = 0.0;
+/* '<S6>:1:199' */
+/* '<S6>:1:200' */
+R[0] = cos(ctrl_student_HIL_B.psi_in);
+R[3] = -sin(ctrl_student_HIL_B.psi_in);
+R[6] = 0.0;
+R[1] = sin(ctrl_student_HIL_B.psi_in);
+R[4] = cos(ctrl_student_HIL_B.psi_in);
+R[7] = 0.0;
+R[2] = 0.0;
+R[5] = 0.0;
+R[8] = 1.0;
+/* '<S6>:1:204' */
+diff[0] = ctrl_student_HIL_B.x_in - ctrl_student_HIL_B.eta_d[0];
+diff[1] = ctrl_student_HIL_B.y_in - ctrl_student_HIL_B.eta_d[1];
+/* '<S6>:1:205' */
+/* '<S6>:1:221' */
+derivicant = ((ctrl_student_HIL_B.psi_in - ctrl_student_HIL_B.eta_d[2]) + 3.1415926535897931) / 6.2831853071795862;
+if (fabs(derivicant - %<(SLibCGCallSubFcn("rt_roundd_snf", ["derivicant"], 0, 4, 3))>) <= 2.2204460492503131E-16 * fabs(derivicant)) {
+    derivicant = 0.0;
+} else {
+    derivicant = (derivicant - floor(derivicant)) * 6.2831853071795862;
+}
+/* '<S6>:1:206' */
+/* '<S6>:1:207' */
+for (iS = 0; iS < 3; iS++) {
+    z_1[iS] = R[3 * iS + 2] * (derivicant - 3.1415926535897931) + (R[3 * iS + 1] * diff[1] + R[3 * iS] * diff[0]);
+}
+/* '<S6>:1:208' */
+/*  alpha_1, alpha_1_dot, and z_2 */
+/* '<S6>:1:211' */
+/* '<S6>:1:212' */
+/* '<S6>:1:213' */
+/* '<S6>:1:215' */
+/* '<S6>:1:217' */
+L3[0] = (0.6555 - 0.3545 * fabs(ctrl_student_HIL_B.u_in)) - ctrl_student_HIL_B.u_in * ctrl_student_HIL_B.u_in * -3.787;
+L3[3] = 0.0;
+L3[6] = 0.0;
+L3[1] = 0.0;
+L3[4] = ((1.33 - -2.776 * fabs(ctrl_student_HIL_B.v_in)) - ctrl_student_HIL_B.v_in * ctrl_student_HIL_B.v_in * -64.91) - 0.805 * fabs(ctrl_student_HIL_B.r_in);
+L3[7] = ((7.25 - -0.845 * fabs(ctrl_student_HIL_B.v_in)) - -3.45 * fabs(ctrl_student_HIL_B.r_in)) - ctrl_student_HIL_B.r_in * ctrl_student_HIL_B.r_in * 0.0;
+L3[2] = 0.0;
+L3[5] = ((-0.0 - -0.2088 * fabs(ctrl_student_HIL_B.v_in)) - ctrl_student_HIL_B.v_in * ctrl_student_HIL_B.v_in * 0.0) - 0.13 * fabs(ctrl_student_HIL_B.r_in);
+L3[8] = ((1.9 - 0.08 * fabs(ctrl_student_HIL_B.v_in)) - 0.75 * fabs(ctrl_student_HIL_B.r_in)) - ctrl_student_HIL_B.r_in * ctrl_student_HIL_B.r_in * 0.0;
+for (iS = 0; iS < 3; iS++) {
+    R_0[iS] = R[3 * iS + 2] * 0.0 + (R[3 * iS + 1] * eta_d_s[1] + R[3 * iS] * eta_d_s[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    diff[iS] = (((S[3 * iS + 1] * z_1[1] + S[3 * iS] * z_1[0]) + S[3 * iS + 2] * z_1[2]) + rtb_TmpSignalConversionAtSFunct[iS]) - R_0[iS] * multiplicant;
+}
+for (iS = 0; iS < 3; iS++) {
+    for (i = 0; i < 3; i++) {
+        L2[iS + 3 * i] = 0.0;
+        L2[iS + 3 * i] = L2[3 * i + iS] + S[3 * iS] * R[i];
+        L2[iS + 3 * i] = S[3 * iS + 1] * R[i + 3] + L2[3 * i + iS];
+        L2[iS + 3 * i] = S[3 * iS + 2] * R[i + 6] + L2[3 * i + iS];
+    }
+}
+for (iS = 0; iS < 3; iS++) {
+    S_0[iS] = L2[iS + 6] * 0.0 + (L2[iS + 3] * eta_d_s[1] + L2[iS] * eta_d_s[0]);
+}
+a_idx_0 = -a_1 * 8.0 / 2.0;
+derivicant = -a_1 * 4.0 / 2.0;
+for (iS = 0; iS < 3; iS++) {
+    R_0[iS] = R[3 * iS + 2] * 0.0 + (R[3 * iS + 1] * derivicant + R[3 * iS] * a_idx_0);
+}
+for (iS = 0; iS < 3; iS++) {
+    R_1[iS] = R[3 * iS + 2] * 0.0 + (R[3 * iS + 1] * eta_d_s[1] + R[3 * iS] * eta_d_s[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    c_a_0[iS] = ((((c_a[iS + 3] * diff[1] + c_a[iS] * diff[0]) + c_a[iS + 6] * diff[2]) + S_0[iS] * 0.12649110640673517) + R_0[iS] * multiplicant * 0.12649110640673517) + R_1[iS] * 0.0 * multiplicant;
+}
+for (iS = 0; iS < 3; iS++) {
+    R_1[iS] = L3[iS + 6] * ctrl_student_HIL_B.r_in + (L3[iS + 3] * ctrl_student_HIL_B.v_in + L3[iS] * ctrl_student_HIL_B.u_in);
+}
+for (iS = 0; iS < 3; iS++) {
+    a_2[iS] = a[iS + 6] * c_a_0[2] + (a[iS + 3] * c_a_0[1] + a[iS] * c_a_0[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    R_0[iS] = R[3 * iS + 2] * 0.0 + (R[3 * iS + 1] * eta_d_s[1] + R[3 * iS] * eta_d_s[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    S_0[iS] = rtb_TmpSignalConversionAtSFunct[iS] - (((c_a[iS + 3] * z_1[1] + c_a[iS] * z_1[0]) + c_a[iS + 6] * z_1[2]) + R_0[iS] * 0.12649110640673517);
+}
+for (iS = 0; iS < 3; iS++) {
+    diff[iS] = ((R_1[iS] + a_2[iS]) - z_1[iS]) - (((real_T)b_a[iS + 3] * S_0[1] + (real_T)b_a[iS] * S_0[0]) + (real_T)b_a[iS + 6] * S_0[2]);
+}
+if ((0.98 <= diff[1]) || rtIsNaN(diff[1])) {
+    derivicant = 0.98;
+} else {
+    derivicant = diff[1];
+}
+if ((2.5 <= diff[2]) || rtIsNaN(diff[2])) {
+    a_1 = 2.5;
+} else {
+    a_1 = diff[2];
+}
+/* '<S6>:1:218' */
+if ((1.03 <= diff[0]) || rtIsNaN(diff[0])) {
+    diff[0] = 1.03;
+}
+ctrl_student_HIL_B.s_dot = multiplicant;
+%<tlcOutputsFcnOfS7B9>\
+%<tlcOutputsFcnOfS7B10>\
+%<tlcOutputsFcnOfS7B11>\
+%<tlcOutputsFcnOfS7B12>\
+%<tlcOutputsFcnOfS7B13>\
+%<tlcOutputsFcnOfS7B14>\
+%<tlcOutputsFcnOfS7B15>\
+/* MATLAB Function: '<Root>/Transfer function' */
+if ((-1.03 >= diff[0]) || rtIsNaN(diff[0])) {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[0] = -1.03;
+} else {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[0] = diff[0];
+}
+if ((-0.98 >= derivicant) || rtIsNaN(derivicant)) {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[1] = -0.98;
+} else {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[1] = derivicant;
+}
+if ((-2.5 >= a_1) || rtIsNaN(a_1)) {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[2] = -2.5;
+} else {
+    /* MATLAB Function: '<Root>/Boundry prevention' */
+    ctrl_student_HIL_B.tau_to_m[2] = a_1;
+}
+/* MATLAB Function: '<Root>/Boundry prevention' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ */
+/* MATLAB Function 'Boundry prevention': '<S1>:1' */
+/* '<S1>:1:2' */
+/*  Axis in the middle of the pool (assumed) */
+/* '<S1>:1:4' */
+for (iS = 0; iS < 2; iS++) {
+    /* '<S1>:1:4' */
+    if (rtb_TmpSignalConversionAtSFun_f[tmp[iS] - 1] > limit[tmp[iS] + 1] * 0.8) {
+        /* '<S1>:1:5' */
+        /* '<S1>:1:6' */
+        ctrl_student_HIL_B.tau_to_m[0] = -ctrl_student_HIL_B.tau_to_m[0];
+        ctrl_student_HIL_B.tau_to_m[1] = -ctrl_student_HIL_B.tau_to_m[1];
+        ctrl_student_HIL_B.tau_to_m[2] = -ctrl_student_HIL_B.tau_to_m[2];
+    }
+    if (rtb_TmpSignalConversionAtSFun_f[tmp[iS] - 1] < limit[tmp[iS] - 1] * 0.8) {
+        /* '<S1>:1:8' */
+        /* '<S1>:1:9' */
+        ctrl_student_HIL_B.tau_to_m[0] = -ctrl_student_HIL_B.tau_to_m[0];
+        ctrl_student_HIL_B.tau_to_m[1] = -ctrl_student_HIL_B.tau_to_m[1];
+        ctrl_student_HIL_B.tau_to_m[2] = -ctrl_student_HIL_B.tau_to_m[2];
+        /* -tau(direction); */
+    }
+    /* '<S1>:1:4' */
+}
+/* '<S1>:1:12' */
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+    /* Memory: '<S2>/Memory4' */
+    ctrl_student_HIL_B.Memory4[0] = ctrl_student_HIL_DW.Memory4_PreviousInput[0];
+    ctrl_student_HIL_B.Memory4[1] = ctrl_student_HIL_DW.Memory4_PreviousInput[1];
+    ctrl_student_HIL_B.Memory4[2] = ctrl_student_HIL_DW.Memory4_PreviousInput[2];
+    /* Memory: '<S2>/Memory3' */
+    ctrl_student_HIL_B.Memory3[0] = ctrl_student_HIL_DW.Memory3_PreviousInput[0];
+    ctrl_student_HIL_B.Memory3[1] = ctrl_student_HIL_DW.Memory3_PreviousInput[1];
+    ctrl_student_HIL_B.Memory3[2] = ctrl_student_HIL_DW.Memory3_PreviousInput[2];
+    /* Memory: '<S2>/Memory2' */
+    ctrl_student_HIL_B.Memory2[0] = ctrl_student_HIL_DW.Memory2_PreviousInput[0];
+    ctrl_student_HIL_B.Memory2[1] = ctrl_student_HIL_DW.Memory2_PreviousInput[1];
+    ctrl_student_HIL_B.Memory2[2] = ctrl_student_HIL_DW.Memory2_PreviousInput[2];
+}
+%<tlcOutputsFcnOfS7B17>\
+/* MATLAB Function: '<S2>/Observer ' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ *  SignalConversion: '<S11>/TmpSignal ConversionAt SFunction Inport1'
+ */
+/* MATLAB Function 'DP Observer /Observer ': '<S9>:1' */
+/*  if(first == 1) */
+/*  eta_hat = zeros(3,1) ;  */
+/*  nu_hat = zeros(3,1);  */
+/*  b_hau = zeros(3,1) */
+/*  first_out = 0;  */
+/*  end */
+/* '<S9>:1:8' */
+for (iS = 0; iS < 9; iS++) {
+    S[iS] = 0.0;
+    L2[iS] = 0.0;
+    L3[iS] = 0.0;
+}
+S[0] = ctrl_student_HIL_B.L1_diag[0];
+S[4] = ctrl_student_HIL_B.L1_diag[1];
+S[8] = ctrl_student_HIL_B.L1_diag[2];
+/* '<S9>:1:9' */
+L2[0] = ctrl_student_HIL_B.L2_diag[0];
+L2[4] = ctrl_student_HIL_B.L2_diag[1];
+L2[8] = ctrl_student_HIL_B.L2_diag[2];
+/* '<S9>:1:10' */
+L3[0] = ctrl_student_HIL_B.L3_diag[0];
+L3[4] = ctrl_student_HIL_B.L3_diag[1];
+L3[8] = ctrl_student_HIL_B.L3_diag[2];
+/*  The total damping matrix from the handbook page 53 */
+/* '<S9>:1:19' */
+rtb_TmpSignalConversionAtSFunct[0] = ctrl_student_HIL_B.x_in - ctrl_student_HIL_B.Memory4[0];
+rtb_TmpSignalConversionAtSFunct[1] = ctrl_student_HIL_B.y_in - ctrl_student_HIL_B.Memory4[1];
+rtb_TmpSignalConversionAtSFunct[2] = ctrl_student_HIL_B.psi_in - ctrl_student_HIL_B.Memory4[2];
+/* '<S9>:1:20' */
+ctrl_student_HIL_B.x_bar = rtb_TmpSignalConversionAtSFunct[0];
+/* '<S9>:1:21' */
+ctrl_student_HIL_B.y_bar = rtb_TmpSignalConversionAtSFunct[1];
+/* '<S9>:1:22' */
+ctrl_student_HIL_B.psi_bar = rtb_TmpSignalConversionAtSFunct[2];
+/* '<S9>:1:23' */
+/* '<S9>:1:24' */
+R[0] = cos(ctrl_student_HIL_B.psi_in);
+R[3] = sin(ctrl_student_HIL_B.psi_in);
+R[6] = 0.0;
+R[1] = -sin(ctrl_student_HIL_B.psi_in);
+R[4] = cos(ctrl_student_HIL_B.psi_in);
+R[7] = 0.0;
+R[2] = 0.0;
+R[5] = 0.0;
+R[8] = 1.0;
+/* '<S9>:1:28' */
+/* '<S9>:1:29' */
+for (iS = 0; iS < 3; iS++) {
+    R_0[iS] = R[iS + 6] * ctrl_student_HIL_B.Memory3[2] + (R[iS + 3] * ctrl_student_HIL_B.Memory3[1] + R[iS] * ctrl_student_HIL_B.Memory3[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    diff[iS] = S[iS + 6] * rtb_TmpSignalConversionAtSFunct[2] + (S[iS + 3] * rtb_TmpSignalConversionAtSFunct[1] + S[iS] * rtb_TmpSignalConversionAtSFunct[0]);
+}
+ctrl_student_HIL_B.eta_hat_dot[0] = R_0[0] + diff[0];
+ctrl_student_HIL_B.eta_hat_dot[1] = R_0[1] + diff[1];
+ctrl_student_HIL_B.eta_hat_dot[2] = R_0[2] + diff[2];
+/* '<S9>:1:31' */
+for (iS = 0; iS < 3; iS++) {
+    ctrl_student_HIL_B.b_hat_dot[iS] = ((L3[iS + 3] * rtb_TmpSignalConversionAtSFunct[1] + L3[iS] * rtb_TmpSignalConversionAtSFunct[0]) + L3[iS + 6] * rtb_TmpSignalConversionAtSFunct[2]) + ctrl_student_HIL_B.b;
+}
+for (iS = 0; iS < 3; iS++) {
+    diff[iS] = b_a_0[iS + 6] * ctrl_student_HIL_B.Memory3[2] + (b_a_0[iS + 3] * ctrl_student_HIL_B.Memory3[1] + b_a_0[iS] * ctrl_student_HIL_B.Memory3[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    R_0[iS] = R[3 * iS + 2] * ctrl_student_HIL_B.Memory2[2] + (R[3 * iS + 1] * ctrl_student_HIL_B.Memory2[1] + R[3 * iS] * ctrl_student_HIL_B.Memory2[0]);
+}
+for (iS = 0; iS < 3; iS++) {
+    for (i = 0; i < 3; i++) {
+        L3[iS + 3 * i] = 0.0;
+        L3[iS + 3 * i] = L3[3 * i + iS] + R[3 * iS] * L2[3 * i];
+        L3[iS + 3 * i] = R[3 * iS + 1] * L2[3 * i + 1] + L3[3 * i + iS];
+        L3[iS + 3 * i] = R[3 * iS + 2] * L2[3 * i + 2] + L3[3 * i + iS];
+    }
+}
+for (iS = 0; iS < 3; iS++) {
+    S_0[iS] = ((L3[iS + 3] * rtb_TmpSignalConversionAtSFunct[1] + L3[iS] * rtb_TmpSignalConversionAtSFunct[0]) + L3[iS + 6] * rtb_TmpSignalConversionAtSFunct[2]) + ((diff[iS] + R_0[iS]) + ctrl_student_HIL_B.tau_to_m[iS]);
+}
+for (iS = 0; iS < 3; iS++) {
+    ctrl_student_HIL_B.nu_hat_dot[iS] = 0.0;
+    ctrl_student_HIL_B.nu_hat_dot[iS] += a_0[iS] * S_0[0];
+    ctrl_student_HIL_B.nu_hat_dot[iS] += a_0[iS + 3] * S_0[1];
+    ctrl_student_HIL_B.nu_hat_dot[iS] += a_0[iS + 6] * S_0[2];
+}
+/* End of MATLAB Function: '<S2>/Observer ' */
+%<tlcOutputsFcnOfS7B19>\
+/* Integrator: '<S2>/Integrator' */
+ctrl_student_HIL_B.Integrator[0] = ctrl_student_HIL_X.Integrator_CSTATE_m[0];
+ctrl_student_HIL_B.Integrator[1] = ctrl_student_HIL_X.Integrator_CSTATE_m[1];
+ctrl_student_HIL_B.Integrator[2] = ctrl_student_HIL_X.Integrator_CSTATE_m[2];
+%<tlcOutputsFcnOfS7B20>\
+/* Integrator: '<S2>/Integrator1' */
+ctrl_student_HIL_B.Integrator1[0] = ctrl_student_HIL_X.Integrator1_CSTATE[0];
+ctrl_student_HIL_B.Integrator1[1] = ctrl_student_HIL_X.Integrator1_CSTATE[1];
+ctrl_student_HIL_B.Integrator1[2] = ctrl_student_HIL_X.Integrator1_CSTATE[2];
+%<tlcOutputsFcnOfS7B21>\
+%<tlcOutputsFcnOfS7B22>\
+%<tlcOutputsFcnOfS7B23>\
+%<tlcOutputsFcnOfS7B24>\
+%<tlcOutputsFcnOfS7B25>\
+%<tlcOutputsFcnOfS7B26>\
+%<tlcOutputsFcnOfS7B27>\
+/* Integrator: '<S2>/Integrator2' */
+ctrl_student_HIL_B.Integrator2[0] = ctrl_student_HIL_X.Integrator2_CSTATE[0];
+ctrl_student_HIL_B.Integrator2[1] = ctrl_student_HIL_X.Integrator2_CSTATE[1];
+ctrl_student_HIL_B.Integrator2[2] = ctrl_student_HIL_X.Integrator2_CSTATE[2];
+%<tlcOutputsFcnOfS7B28>\
+/* MATLAB Function: '<S5>/the rest ' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ *  SignalConversion: '<S11>/TmpSignal ConversionAt SFunction Inport1'
+ */
+/* MATLAB Function 'SurgeObserver /the rest ': '<S22>:1' */
+/* '<S22>:1:3' */
+if (sin(ctrl_student_HIL_B.psi_in) + cos(ctrl_student_HIL_B.psi_in) < 0.0) {
+    /* '<S22>:1:5' */
+    /* '<S22>:1:6' */
+    multiplicant = -ctrl_student_HIL_B.k_0;
+} else {
+    /* '<S22>:1:8' */
+    multiplicant = ctrl_student_HIL_B.k_0;
+}
+/* '<S22>:1:11' */
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+    /* Constant: '<S5>/Constant' */
+    ctrl_student_HIL_B.Constant = ctrl_student_HIL_P.Constant_Value;
+}
+%<tlcOutputsFcnOfS7B30>\
+/* Sum: '<S5>/Sum4' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ *  MATLAB Function: '<S5>/the rest '
+ */
+ctrl_student_HIL_B.u_hat = (rtb_TmpSignalConversionAtSFun_f[0] + rtb_TmpSignalConversionAtSFun_f[1]) * multiplicant + rtb_Integrator_p;
+%<tlcOutputsFcnOfS7B31>\
+/* MATLAB Function: '<S5>/Integration block ' incorporates:
+ *  MATLAB Function: '<S3>/MATLAB Function1'
+ */
+derivicant = ctrl_student_HIL_B.u_hat;
+/* MATLAB Function 'SurgeObserver /Integration block ': '<S21>:1' */
+/* '<S21>:1:2' */
+a_1 = sin(rtb_TmpSignalConversionAtSFun_f[2]) + cos(rtb_TmpSignalConversionAtSFun_f[2]);
+if (ctrl_student_HIL_B.Reset != 0.0) {
+    /* '<S21>:1:6' */
+    derivicant = 0.0;
+}
+if (a_1 < 0.0) {
+    /* '<S21>:1:9' */
+    /* '<S21>:1:10' */
+    multiplicant = -ctrl_student_HIL_B.k_0;
+} else {
+    /* '<S21>:1:12' */
+    multiplicant = ctrl_student_HIL_B.k_0;
+}
+/* '<S21>:1:15' */
+/* '<S21>:1:17' */
+ctrl_student_HIL_B.y = (-((0.6555 - 0.3545 * fabs(derivicant)) + derivicant * derivicant * 3.787) * derivicant + ctrl_student_HIL_B.tau_to_m[0]) / 14.79 - multiplicant * a_1 * derivicant;
+/* End of MATLAB Function: '<S5>/Integration block ' */
+%<tlcOutputsFcnOfS7B33>\
+%<tlcOutputsFcnOfS7B34>\
+%<tlcOutputsFcnOfS7B35>\
+%<tlcOutputsFcnOfS7B36>\
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+%<tlcOutputsFcnOfS7B38>\
+%<tlcOutputsFcnOfS7B40>\
+%<tlcOutputsFcnOfS7B42>\
+}
+%<tlcOutputsFcnOfS7B43>\
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+%<tlcOutputsFcnOfS7B44>\
+%<tlcOutputsFcnOfS7B45>\
+%<tlcOutputsFcnOfS7B46>\
+%<tlcOutputsFcnOfS7B47>\
+%<tlcOutputsFcnOfS7B48>\
+%<tlcOutputsFcnOfS7B49>\
+%<tlcOutputsFcnOfS7B50>\
+%<tlcOutputsFcnOfS7B51>\
+%<tlcOutputsFcnOfS7B52>\
+%<tlcOutputsFcnOfS7B53>\
+%<tlcOutputsFcnOfS7B54>\
+%<tlcOutputsFcnOfS7B55>\
+%<tlcOutputsFcnOfS7B56>\
+}
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction

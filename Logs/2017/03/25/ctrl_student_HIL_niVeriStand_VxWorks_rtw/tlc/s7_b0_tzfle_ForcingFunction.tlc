@@ -1,0 +1,43 @@
+%implements s7_b0_tzfle_ForcingFunction "C"
+
+%function ForcingFunction(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+XDot_ctrl_student_HIL_T *_rtXdot;
+%closefile localVarDecl
+%assign tlcForcingFunctionFcnOfS7B30 = OpaqueTLCBlockFcn("ForcingFunction", 7, 30, 0, 7)
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* ForcingFunction for Integrator: '<Root>/Integrator' */
+_rtXdot->Integrator_CSTATE = ctrl_student_HIL_B.s_dot;
+/* ForcingFunction for SecondOrderIntegrator: '<S3>/Integrator, Second-Order' */
+if (ctrl_student_HIL_DW.IntegratorSecondOrder_MODE == 0) {
+    _rtXdot->IntegratorSecondOrder_CSTATE[0] = ctrl_student_HIL_X.IntegratorSecondOrder_CSTATE[1];
+    _rtXdot->IntegratorSecondOrder_CSTATE[1] = ctrl_student_HIL_B.u_dot_imu;
+}
+/* End of ForcingFunction for SecondOrderIntegrator: '<S3>/Integrator, Second-Order' */
+
+/* ForcingFunction for Integrator: '<S2>/Integrator' */
+_rtXdot->Integrator_CSTATE_m[0] = ctrl_student_HIL_B.eta_hat_dot[0];
+_rtXdot->Integrator_CSTATE_m[1] = ctrl_student_HIL_B.eta_hat_dot[1];
+_rtXdot->Integrator_CSTATE_m[2] = ctrl_student_HIL_B.eta_hat_dot[2];
+/* ForcingFunction for Integrator: '<S2>/Integrator1' */
+_rtXdot->Integrator1_CSTATE[0] = ctrl_student_HIL_B.nu_hat_dot[0];
+_rtXdot->Integrator1_CSTATE[1] = ctrl_student_HIL_B.nu_hat_dot[1];
+_rtXdot->Integrator1_CSTATE[2] = ctrl_student_HIL_B.nu_hat_dot[2];
+/* ForcingFunction for Integrator: '<S2>/Integrator2' */
+_rtXdot->Integrator2_CSTATE[0] = ctrl_student_HIL_B.b_hat_dot[0];
+_rtXdot->Integrator2_CSTATE[1] = ctrl_student_HIL_B.b_hat_dot[1];
+_rtXdot->Integrator2_CSTATE[2] = ctrl_student_HIL_B.b_hat_dot[2];
+%<tlcForcingFunctionFcnOfS7B30>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void ForcingFunction(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 7, fcnProtoType)>
+%<LibSetSystemField(system, "CachedForcingFunctionLocalVars", localVarDecl)>
+%endfunction

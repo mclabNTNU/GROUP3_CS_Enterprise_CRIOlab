@@ -1,0 +1,52 @@
+%implements s7_b0_tzfle_InitializeConditions "C"
+
+%function InitializeConditions(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcInitializeConditionsFcnOfS7B30 = OpaqueTLCBlockFcn("InitializeConditions", 7, 30, 0, 3)
+%<SLibInsertAsyncTaskInitializeCode(system)>
+%<SLibWriteMachineInitialize()>
+/* InitializeConditions for Integrator: '<Root>/Integrator' */
+ctrl_student_HIL_X.Integrator_CSTATE = ctrl_student_HIL_P.Integrator_IC;
+/* InitializeConditions for Memory: '<S3>/Memory' */
+memcpy(&ctrl_student_HIL_DW.Memory_PreviousInput[0], &ctrl_student_HIL_P.Memory_X0[0], 9U * sizeof(real_T));
+/* InitializeConditions for SecondOrderIntegrator: '<S3>/Integrator, Second-Order' */
+ctrl_student_HIL_X.IntegratorSecondOrder_CSTATE[0] = ctrl_student_HIL_P.IntegratorSecondOrder_ICX;
+ctrl_student_HIL_X.IntegratorSecondOrder_CSTATE[1] = ctrl_student_HIL_P.IntegratorSecondOrder_ICDXDT;
+ctrl_student_HIL_DW.IntegratorSecondOrder_MODE = 0;
+/* InitializeConditions for Memory: '<S2>/Memory4' */
+ctrl_student_HIL_DW.Memory4_PreviousInput[0] = ctrl_student_HIL_P.Memory4_X0[0];
+ctrl_student_HIL_DW.Memory4_PreviousInput[1] = ctrl_student_HIL_P.Memory4_X0[1];
+ctrl_student_HIL_DW.Memory4_PreviousInput[2] = ctrl_student_HIL_P.Memory4_X0[2];
+/* InitializeConditions for Memory: '<S2>/Memory3' */
+ctrl_student_HIL_DW.Memory3_PreviousInput[0] = ctrl_student_HIL_P.Memory3_X0[0];
+ctrl_student_HIL_DW.Memory3_PreviousInput[1] = ctrl_student_HIL_P.Memory3_X0[1];
+ctrl_student_HIL_DW.Memory3_PreviousInput[2] = ctrl_student_HIL_P.Memory3_X0[2];
+/* InitializeConditions for Memory: '<S2>/Memory2' */
+ctrl_student_HIL_DW.Memory2_PreviousInput[0] = ctrl_student_HIL_P.Memory2_X0[0];
+ctrl_student_HIL_DW.Memory2_PreviousInput[1] = ctrl_student_HIL_P.Memory2_X0[1];
+ctrl_student_HIL_DW.Memory2_PreviousInput[2] = ctrl_student_HIL_P.Memory2_X0[2];
+/* InitializeConditions for Integrator: '<S2>/Integrator' */
+ctrl_student_HIL_X.Integrator_CSTATE_m[0] = ctrl_student_HIL_P.Integrator_IC_d;
+ctrl_student_HIL_X.Integrator_CSTATE_m[1] = ctrl_student_HIL_P.Integrator_IC_d;
+ctrl_student_HIL_X.Integrator_CSTATE_m[2] = ctrl_student_HIL_P.Integrator_IC_d;
+/* InitializeConditions for Integrator: '<S2>/Integrator1' */
+ctrl_student_HIL_X.Integrator1_CSTATE[0] = ctrl_student_HIL_P.Integrator1_IC;
+ctrl_student_HIL_X.Integrator1_CSTATE[1] = ctrl_student_HIL_P.Integrator1_IC;
+ctrl_student_HIL_X.Integrator1_CSTATE[2] = ctrl_student_HIL_P.Integrator1_IC;
+/* InitializeConditions for Integrator: '<S2>/Integrator2' */
+ctrl_student_HIL_X.Integrator2_CSTATE[0] = ctrl_student_HIL_P.Integrator2_IC;
+ctrl_student_HIL_X.Integrator2_CSTATE[1] = ctrl_student_HIL_P.Integrator2_IC;
+ctrl_student_HIL_X.Integrator2_CSTATE[2] = ctrl_student_HIL_P.Integrator2_IC;
+%<tlcInitializeConditionsFcnOfS7B30>\
+%<SLibInsertInitPeriodicCStatesFcn(system)>
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void InitializeConditions(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction

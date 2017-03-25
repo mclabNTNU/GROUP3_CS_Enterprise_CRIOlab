@@ -1,0 +1,33 @@
+%implements s7_b0_tzfle_Update "C"
+
+%function Update(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcUpdateFcnOfS7B30 = OpaqueTLCBlockFcn("Update", 7, 30, 0, 5)
+if (%<(SLibCGIRIsSampleHit(1, 7))>) {
+    /* Update for Memory: '<S3>/Memory' */
+    memcpy(&ctrl_student_HIL_DW.Memory_PreviousInput[0], &ctrl_student_HIL_B.newmem[0], 9U * sizeof(real_T));
+    /* Update for Memory: '<S2>/Memory4' */
+    ctrl_student_HIL_DW.Memory4_PreviousInput[0] = ctrl_student_HIL_B.Integrator[0];
+    ctrl_student_HIL_DW.Memory4_PreviousInput[1] = ctrl_student_HIL_B.Integrator[1];
+    ctrl_student_HIL_DW.Memory4_PreviousInput[2] = ctrl_student_HIL_B.Integrator[2];
+    /* Update for Memory: '<S2>/Memory3' */
+    ctrl_student_HIL_DW.Memory3_PreviousInput[0] = ctrl_student_HIL_B.Integrator1[0];
+    ctrl_student_HIL_DW.Memory3_PreviousInput[1] = ctrl_student_HIL_B.Integrator1[1];
+    ctrl_student_HIL_DW.Memory3_PreviousInput[2] = ctrl_student_HIL_B.Integrator1[2];
+    /* Update for Memory: '<S2>/Memory2' */
+    ctrl_student_HIL_DW.Memory2_PreviousInput[0] = ctrl_student_HIL_B.Integrator2[0];
+    ctrl_student_HIL_DW.Memory2_PreviousInput[1] = ctrl_student_HIL_B.Integrator2[1];
+    ctrl_student_HIL_DW.Memory2_PreviousInput[2] = ctrl_student_HIL_B.Integrator2[2];
+}
+%<tlcUpdateFcnOfS7B30>\
+%closefile cfgTxt
+%<cfgTxt>
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Update(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
+%endfunction
