@@ -65,15 +65,9 @@ ALT_MATLAB_BIN  		:= C:\PROGRA~1\MATLAB\R2015a\bin
 S_FUNCTIONS     		:= 
 S_FUNCTIONS_LIB 		:= 
 SOLVER          		:= 
-<<<<<<< HEAD
 NUMST           		:= 2
 TID01EQ         		:= 1
-NCSTATES        		:= 13
-=======
-NUMST           		:= 1
-TID01EQ         		:= 0
-NCSTATES        		:= 0
->>>>>>> 8625797a8fd17ab9435c5e2e594712ec831ec10b
+NCSTATES        		:= 1
 BUILDARGS       		:=  NIDEBUG=0 NIOPT="Default" OPTS="" ISPROTECTINGMODEL=NOTPROTECTING
 MULTITASKING    		:= 0
 EXT_MODE        		:= 0
