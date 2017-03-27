@@ -1,11 +1,15 @@
 /*
  * u2pwm.c
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "u2pwm".
  *
- * Model version              : 1.24
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 15:19:16 2015
+ * Model version              : 1.29
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 13:58:15 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -13,6 +17,7 @@
  * Code generation objectives: Unspecified
  * Validation result: Not run
  */
+
 #include "u2pwm.h"
 #include "u2pwm_private.h"
 
@@ -129,7 +134,6 @@ static void u2pwm_output(void)
 {
   real_T rtb_Gain2;
   real_T rtb_Product11;
-  real_T rtb_Saturation3;
   real_T rtb_DLookupTable;
   real_T rtb_DLookupTable1;
   real_T rtb_DLookupTable2;
@@ -163,17 +167,17 @@ static void u2pwm_output(void)
 
     /* Saturate: '<Root>/Saturation4' */
     if (u2pwm_B.u_VSP1 > u2pwm_P.Saturation4_UpperSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation4_UpperSat;
+      rtb_Product11 = u2pwm_P.Saturation4_UpperSat;
     } else if (u2pwm_B.u_VSP1 < u2pwm_P.Saturation4_LowerSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation4_LowerSat;
+      rtb_Product11 = u2pwm_P.Saturation4_LowerSat;
     } else {
-      rtb_Saturation3 = u2pwm_B.u_VSP1;
+      rtb_Product11 = u2pwm_B.u_VSP1;
     }
 
     /* Gain: '<Root>/Gain4' incorporates:
      *  Saturate: '<Root>/Saturation4'
      */
-    rtb_Product11 = u2pwm_P.Gain4_Gain * rtb_Saturation3;
+    rtb_Product11 *= u2pwm_P.Gain4_Gain;
 
     /* Lookup_n-D: '<Root>/2-D Lookup Table' incorporates:
      *  Gain: '<Root>/Gain'
@@ -206,11 +210,11 @@ static void u2pwm_output(void)
 
     /* Saturate: '<Root>/Saturation3' */
     if (u2pwm_B.u_VSP2 > u2pwm_P.Saturation3_UpperSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation3_UpperSat;
+      rtb_Product11 = u2pwm_P.Saturation3_UpperSat;
     } else if (u2pwm_B.u_VSP2 < u2pwm_P.Saturation3_LowerSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation3_LowerSat;
+      rtb_Product11 = u2pwm_P.Saturation3_LowerSat;
     } else {
-      rtb_Saturation3 = u2pwm_B.u_VSP2;
+      rtb_Product11 = u2pwm_B.u_VSP2;
     }
 
     /* End of Saturate: '<Root>/Saturation3' */
@@ -222,37 +226,33 @@ static void u2pwm_output(void)
      *  Trigonometry: '<Root>/Trigonometric Function6'
      *  Trigonometry: '<Root>/Trigonometric Function7'
      */
-    rtb_DLookupTable2 = look2_binlxpw(rtb_Saturation3 * cos(rtb_Gain2) *
-      u2pwm_P.Gain2_Gain, rtb_Saturation3 * sin(rtb_Gain2),
+    rtb_DLookupTable2 = look2_binlxpw(rtb_Product11 * cos(rtb_Gain2) *
+      u2pwm_P.Gain2_Gain, rtb_Product11 * sin(rtb_Gain2),
       u2pwm_P.DLookupTable2_bp01Data, u2pwm_P.DLookupTable2_bp02Data,
       u2pwm_P.DLookupTable2_tableData, u2pwm_P.DLookupTable2_maxIndex, 5U);
 
-    /* Product: '<Root>/Product11' incorporates:
+    /* Lookup_n-D: '<Root>/2-D Lookup Table3' incorporates:
+     *  Gain: '<Root>/Gain3'
+     *  Product: '<Root>/Product10'
+     *  Product: '<Root>/Product11'
+     *  Trigonometry: '<Root>/Trigonometric Function10'
      *  Trigonometry: '<Root>/Trigonometric Function11'
      */
-    rtb_Product11 = rtb_Saturation3 * sin(rtb_Gain2);
-
-    /* Gain: '<Root>/Gain3' incorporates:
-     *  Product: '<Root>/Product10'
-     *  Trigonometry: '<Root>/Trigonometric Function10'
-     */
-    rtb_Gain2 = rtb_Saturation3 * cos(rtb_Gain2) * u2pwm_P.Gain3_Gain;
-
-    /* Lookup_n-D: '<Root>/2-D Lookup Table3' */
-    rtb_Gain2 = look2_binlxpw(rtb_Gain2, rtb_Product11,
+    rtb_Gain2 = look2_binlxpw(rtb_Product11 * cos(rtb_Gain2) *
+      u2pwm_P.Gain3_Gain, rtb_Product11 * sin(rtb_Gain2),
       u2pwm_P.DLookupTable3_bp01Data, u2pwm_P.DLookupTable3_bp02Data,
       u2pwm_P.DLookupTable3_tableData, u2pwm_P.DLookupTable3_maxIndex, 5U);
 
     /* Saturate: '<Root>/Saturation' */
     if (u2pwm_B.u_BT > u2pwm_P.Saturation_UpperSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation_UpperSat;
+      rtb_Product11 = u2pwm_P.Saturation_UpperSat;
     } else if (u2pwm_B.u_BT < u2pwm_P.Saturation_LowerSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation_LowerSat;
+      rtb_Product11 = u2pwm_P.Saturation_LowerSat;
     } else {
-      rtb_Saturation3 = u2pwm_B.u_BT;
+      rtb_Product11 = u2pwm_B.u_BT;
     }
 
-    u2pwm_B.Switch[0] = u2pwm_P.BT_u2pwm_gain * rtb_Saturation3 +
+    u2pwm_B.Switch[0] = u2pwm_P.BT_u2pwm_gain * rtb_Product11 +
       u2pwm_P.BT_zero_pwm;
 
     /* Saturate: '<Root>/Saturation1' incorporates:
@@ -262,14 +262,14 @@ static void u2pwm_output(void)
      *  Sum: '<Root>/Sum2'
      */
     if (u2pwm_B.omega_VSP1 > u2pwm_P.Saturation1_UpperSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation1_UpperSat;
+      rtb_Product11 = u2pwm_P.Saturation1_UpperSat;
     } else if (u2pwm_B.omega_VSP1 < u2pwm_P.Saturation1_LowerSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation1_LowerSat;
+      rtb_Product11 = u2pwm_P.Saturation1_LowerSat;
     } else {
-      rtb_Saturation3 = u2pwm_B.omega_VSP1;
+      rtb_Product11 = u2pwm_B.omega_VSP1;
     }
 
-    u2pwm_B.Switch[1] = u2pwm_P.VSP_u2pwm_gain * rtb_Saturation3 +
+    u2pwm_B.Switch[1] = u2pwm_P.VSP_u2pwm_gain * rtb_Product11 +
       u2pwm_P.VSP_zero_pwm;
 
     /* Saturate: '<Root>/Saturation2' incorporates:
@@ -279,14 +279,14 @@ static void u2pwm_output(void)
      *  Sum: '<Root>/Sum1'
      */
     if (u2pwm_B.omega_VSP2 > u2pwm_P.Saturation2_UpperSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation2_UpperSat;
+      rtb_Product11 = u2pwm_P.Saturation2_UpperSat;
     } else if (u2pwm_B.omega_VSP2 < u2pwm_P.Saturation2_LowerSat) {
-      rtb_Saturation3 = u2pwm_P.Saturation2_LowerSat;
+      rtb_Product11 = u2pwm_P.Saturation2_LowerSat;
     } else {
-      rtb_Saturation3 = u2pwm_B.omega_VSP2;
+      rtb_Product11 = u2pwm_B.omega_VSP2;
     }
 
-    u2pwm_B.Switch[2] = u2pwm_P.VSP_u2pwm_gain * rtb_Saturation3 +
+    u2pwm_B.Switch[2] = u2pwm_P.VSP_u2pwm_gain * rtb_Product11 +
       u2pwm_P.VSP_zero_pwm;
     u2pwm_B.Switch[3] = rtb_DLookupTable;
     u2pwm_B.Switch[4] = rtb_DLookupTable1;
@@ -318,12 +318,12 @@ static void u2pwm_update(void)
 }
 
 /* Model initialize function */
-void u2pwm_initialize(void)
+static void u2pwm_initialize(void)
 {
 }
 
 /* Model terminate function */
-void u2pwm_terminate(void)
+static void u2pwm_terminate(void)
 {
   /* (no terminate code required) */
 }
@@ -534,15 +534,15 @@ double NIRT_GetValueByDataType(void* ptr,int subindex, int type, int Complex)
     return NIRT_GetValueByDataType(ptr,subindex,0,Complex);
 
    case 22:
-    return NIRT_GetValueByDataType(ptr,subindex,7,Complex);
+    return NIRT_GetValueByDataType(ptr,subindex,0,Complex);
 
    case 23:
     return NIRT_GetValueByDataType(ptr,subindex,0,Complex);
 
-   case 27:
-    return NIRT_GetValueByDataType(ptr,subindex,0,Complex);
+   case 24:
+    return NIRT_GetValueByDataType(ptr,subindex,7,Complex);
 
-   case 28:
+   case 25:
     return NIRT_GetValueByDataType(ptr,subindex,0,Complex);
 
    case 29:
@@ -603,7 +603,7 @@ long NIRT_SetValueByDataType(void* ptr,int subindex, double value, int type, int
     return NIRT_SetValueByDataType(ptr,subindex,value,6,Complex);
 
    case 13:
-    //Type is array. Call SetValueByDataType on its contained type
+    //Type is matrix. Call SetValueByDataType on its contained type
     return NIRT_SetValueByDataType(ptr,subindex,value,7,Complex);
 
    case 15:
@@ -636,17 +636,17 @@ long NIRT_SetValueByDataType(void* ptr,int subindex, double value, int type, int
 
    case 22:
     //Type is matrix. Call SetValueByDataType on its contained type
-    return NIRT_SetValueByDataType(ptr,subindex,value,7,Complex);
+    return NIRT_SetValueByDataType(ptr,subindex,value,0,Complex);
 
    case 23:
     //Type is matrix. Call SetValueByDataType on its contained type
     return NIRT_SetValueByDataType(ptr,subindex,value,0,Complex);
 
-   case 27:
+   case 24:
     //Type is matrix. Call SetValueByDataType on its contained type
-    return NIRT_SetValueByDataType(ptr,subindex,value,0,Complex);
+    return NIRT_SetValueByDataType(ptr,subindex,value,7,Complex);
 
-   case 28:
+   case 25:
     //Type is matrix. Call SetValueByDataType on its contained type
     return NIRT_SetValueByDataType(ptr,subindex,value,0,Complex);
 
@@ -873,114 +873,114 @@ int NI_InitExternalOutputs()
 // by default, all elements (inclulding	scalars) have 2 dimensions [1,1]
 static NI_Parameter NI_ParamList[] DataSection(".NIVS.paramlist") =
 {
-  { 0, "u2pwm/VPS_Speed_Gain1/Gain", offsetof(P_u2pwm_T, BT_u2pwm_gain), 27, 1,
+  { 0, "u2pwm/VPS_Speed_Gain1/Gain", offsetof(P_u2pwm_T, BT_u2pwm_gain), 29, 1,
     2, 0, 0 },
 
-  { 1, "u2pwm/VPS_Power_Offset1/Value", offsetof(P_u2pwm_T, BT_zero_pwm), 27, 1,
+  { 1, "u2pwm/VPS_Power_Offset1/Value", offsetof(P_u2pwm_T, BT_zero_pwm), 29, 1,
     2, 2, 0 },
 
-  { 2, "u2pwm/VPS_Speed_Gain/Gain", offsetof(P_u2pwm_T, VSP_u2pwm_gain), 27, 1,
+  { 2, "u2pwm/VPS_Speed_Gain/Gain", offsetof(P_u2pwm_T, VSP_u2pwm_gain), 29, 1,
     2, 4, 0 },
 
-  { 3, "u2pwm/VPS_Speed_Gain2/Gain", offsetof(P_u2pwm_T, VSP_u2pwm_gain), 27, 1,
+  { 3, "u2pwm/VPS_Speed_Gain2/Gain", offsetof(P_u2pwm_T, VSP_u2pwm_gain), 29, 1,
     2, 6, 0 },
 
-  { 4, "u2pwm/VPS_Power_Offset/Value", offsetof(P_u2pwm_T, VSP_zero_pwm), 27, 1,
+  { 4, "u2pwm/VPS_Power_Offset/Value", offsetof(P_u2pwm_T, VSP_zero_pwm), 29, 1,
     2, 8, 0 },
 
   { 5, "u2pwm/Saturation/UpperLimit", offsetof(P_u2pwm_T, Saturation_UpperSat),
-    27, 1, 2, 10, 0 },
+    29, 1, 2, 10, 0 },
 
   { 6, "u2pwm/Saturation/LowerLimit", offsetof(P_u2pwm_T, Saturation_LowerSat),
-    27, 1, 2, 12, 0 },
+    29, 1, 2, 12, 0 },
 
   { 7, "u2pwm/Saturation1/UpperLimit", offsetof(P_u2pwm_T, Saturation1_UpperSat),
-    27, 1, 2, 14, 0 },
+    29, 1, 2, 14, 0 },
 
   { 8, "u2pwm/Saturation1/LowerLimit", offsetof(P_u2pwm_T, Saturation1_LowerSat),
-    27, 1, 2, 16, 0 },
+    29, 1, 2, 16, 0 },
 
   { 9, "u2pwm/Saturation2/UpperLimit", offsetof(P_u2pwm_T, Saturation2_UpperSat),
-    27, 1, 2, 18, 0 },
+    29, 1, 2, 18, 0 },
 
   { 10, "u2pwm/Saturation2/LowerLimit", offsetof(P_u2pwm_T, Saturation2_LowerSat),
-    27, 1, 2, 20, 0 },
+    29, 1, 2, 20, 0 },
 
-  { 11, "u2pwm/Constant/Value", offsetof(P_u2pwm_T, Constant_Value), 27, 1, 2,
+  { 11, "u2pwm/Constant/Value", offsetof(P_u2pwm_T, Constant_Value), 29, 1, 2,
     22, 0 },
 
   { 12, "u2pwm/Saturation4/UpperLimit", offsetof(P_u2pwm_T, Saturation4_UpperSat),
-    27, 1, 2, 24, 0 },
+    29, 1, 2, 24, 0 },
 
   { 13, "u2pwm/Saturation4/LowerLimit", offsetof(P_u2pwm_T, Saturation4_LowerSat),
-    27, 1, 2, 26, 0 },
+    29, 1, 2, 26, 0 },
 
-  { 14, "u2pwm/Gain4/Gain", offsetof(P_u2pwm_T, Gain4_Gain), 27, 1, 2, 28, 0 },
+  { 14, "u2pwm/Gain4/Gain", offsetof(P_u2pwm_T, Gain4_Gain), 29, 1, 2, 28, 0 },
 
-  { 15, "u2pwm/Gain/Gain", offsetof(P_u2pwm_T, Gain_Gain), 27, 1, 2, 30, 0 },
+  { 15, "u2pwm/Gain/Gain", offsetof(P_u2pwm_T, Gain_Gain), 29, 1, 2, 30, 0 },
 
   { 16, "u2pwm/2-D Lookup Table/Table", offsetof(P_u2pwm_T,
-    DLookupTable_tableData), 28, 25, 2, 32, 0 },
+    DLookupTable_tableData), 21, 25, 2, 32, 0 },
 
   { 17, "u2pwm/2-D Lookup Table/BreakpointsForDimension1", offsetof(P_u2pwm_T,
-    DLookupTable_bp01Data), 29, 5, 2, 34, 0 },
+    DLookupTable_bp01Data), 23, 5, 2, 34, 0 },
 
   { 18, "u2pwm/2-D Lookup Table/BreakpointsForDimension2", offsetof(P_u2pwm_T,
-    DLookupTable_bp02Data), 29, 5, 2, 36, 0 },
+    DLookupTable_bp02Data), 23, 5, 2, 36, 0 },
 
-  { 19, "u2pwm/Gain1/Gain", offsetof(P_u2pwm_T, Gain1_Gain), 27, 1, 2, 38, 0 },
+  { 19, "u2pwm/Gain1/Gain", offsetof(P_u2pwm_T, Gain1_Gain), 29, 1, 2, 38, 0 },
 
   { 20, "u2pwm/2-D Lookup Table1/Table", offsetof(P_u2pwm_T,
-    DLookupTable1_tableData), 28, 25, 2, 40, 0 },
+    DLookupTable1_tableData), 21, 25, 2, 40, 0 },
 
   { 21, "u2pwm/2-D Lookup Table1/BreakpointsForDimension1", offsetof(P_u2pwm_T,
-    DLookupTable1_bp01Data), 29, 5, 2, 42, 0 },
+    DLookupTable1_bp01Data), 23, 5, 2, 42, 0 },
 
   { 22, "u2pwm/2-D Lookup Table1/BreakpointsForDimension2", offsetof(P_u2pwm_T,
-    DLookupTable1_bp02Data), 29, 5, 2, 44, 0 },
+    DLookupTable1_bp02Data), 23, 5, 2, 44, 0 },
 
-  { 23, "u2pwm/Constant1/Value", offsetof(P_u2pwm_T, Constant1_Value), 27, 1, 2,
+  { 23, "u2pwm/Constant1/Value", offsetof(P_u2pwm_T, Constant1_Value), 29, 1, 2,
     46, 0 },
 
   { 24, "u2pwm/Saturation3/UpperLimit", offsetof(P_u2pwm_T, Saturation3_UpperSat),
-    27, 1, 2, 48, 0 },
+    29, 1, 2, 48, 0 },
 
   { 25, "u2pwm/Saturation3/LowerLimit", offsetof(P_u2pwm_T, Saturation3_LowerSat),
-    27, 1, 2, 50, 0 },
+    29, 1, 2, 50, 0 },
 
-  { 26, "u2pwm/Gain2/Gain", offsetof(P_u2pwm_T, Gain2_Gain), 27, 1, 2, 52, 0 },
+  { 26, "u2pwm/Gain2/Gain", offsetof(P_u2pwm_T, Gain2_Gain), 29, 1, 2, 52, 0 },
 
   { 27, "u2pwm/2-D Lookup Table2/Table", offsetof(P_u2pwm_T,
-    DLookupTable2_tableData), 28, 25, 2, 54, 0 },
+    DLookupTable2_tableData), 21, 25, 2, 54, 0 },
 
   { 28, "u2pwm/2-D Lookup Table2/BreakpointsForDimension1", offsetof(P_u2pwm_T,
-    DLookupTable2_bp01Data), 29, 5, 2, 56, 0 },
+    DLookupTable2_bp01Data), 23, 5, 2, 56, 0 },
 
   { 29, "u2pwm/2-D Lookup Table2/BreakpointsForDimension2", offsetof(P_u2pwm_T,
-    DLookupTable2_bp02Data), 29, 5, 2, 58, 0 },
+    DLookupTable2_bp02Data), 23, 5, 2, 58, 0 },
 
-  { 30, "u2pwm/Gain3/Gain", offsetof(P_u2pwm_T, Gain3_Gain), 27, 1, 2, 60, 0 },
+  { 30, "u2pwm/Gain3/Gain", offsetof(P_u2pwm_T, Gain3_Gain), 29, 1, 2, 60, 0 },
 
   { 31, "u2pwm/2-D Lookup Table3/Table", offsetof(P_u2pwm_T,
-    DLookupTable3_tableData), 28, 25, 2, 62, 0 },
+    DLookupTable3_tableData), 21, 25, 2, 62, 0 },
 
   { 32, "u2pwm/2-D Lookup Table3/BreakpointsForDimension1", offsetof(P_u2pwm_T,
-    DLookupTable3_bp01Data), 29, 5, 2, 64, 0 },
+    DLookupTable3_bp01Data), 23, 5, 2, 64, 0 },
 
   { 33, "u2pwm/2-D Lookup Table3/BreakpointsForDimension2", offsetof(P_u2pwm_T,
-    DLookupTable3_bp02Data), 29, 5, 2, 66, 0 },
+    DLookupTable3_bp02Data), 23, 5, 2, 66, 0 },
 
   { 34, "u2pwm/2-D Lookup Table/maxIndex", offsetof(P_u2pwm_T,
-    DLookupTable_maxIndex), 22, 2, 2, 68, 0 },
+    DLookupTable_maxIndex), 24, 2, 2, 68, 0 },
 
   { 35, "u2pwm/2-D Lookup Table1/maxIndex", offsetof(P_u2pwm_T,
-    DLookupTable1_maxIndex), 22, 2, 2, 70, 0 },
+    DLookupTable1_maxIndex), 24, 2, 2, 70, 0 },
 
   { 36, "u2pwm/2-D Lookup Table2/maxIndex", offsetof(P_u2pwm_T,
-    DLookupTable2_maxIndex), 22, 2, 2, 72, 0 },
+    DLookupTable2_maxIndex), 24, 2, 2, 72, 0 },
 
   { 37, "u2pwm/2-D Lookup Table3/maxIndex", offsetof(P_u2pwm_T,
-    DLookupTable3_maxIndex), 22, 2, 2, 74, 0 },
+    DLookupTable3_maxIndex), 24, 2, 2, 74, 0 },
 };
 
 static int NI_ParamListSize DataSection(".NIVS.paramlistsize") = 38;
@@ -1169,8 +1169,8 @@ NI_Task NI_TaskList[] DataSection(".NIVS.tasklist") =
 int NI_NumTasks DataSection(".NIVS.numtasks") = 1;
 static char* NI_CompiledModelName DataSection(".NIVS.compiledmodelname") =
   "u2pwm";
-static char* NI_CompiledModelVersion = "1.24";
-static char* NI_CompiledModelDateTime = "Fri Dec 04 15:19:16 2015";
+static char* NI_CompiledModelVersion = "1.29";
+static char* NI_CompiledModelDateTime = "Mon Mar 27 13:58:15 2017";
 static char* NI_builder DataSection(".NIVS.builder") =
   "NI VeriStand 2014.0.0.82 (2014) RTW Build";
 static char* NI_BuilderVersion DataSection(".NIVS.builderversion") =

@@ -1,11 +1,15 @@
 /*
  * ctrl_switch.h
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "ctrl_switch".
  *
- * Model version              : 1.19
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 14:49:29 2015
+ * Model version              : 1.25
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 14:02:52 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -13,6 +17,7 @@
  * Code generation objectives: Unspecified
  * Validation result: Not run
  */
+
 #ifndef RTW_HEADER_ctrl_switch_h_
 #define RTW_HEADER_ctrl_switch_h_
 #include <string.h>
@@ -20,6 +25,7 @@
 #ifndef ctrl_switch_COMMON_INCLUDES_
 # define ctrl_switch_COMMON_INCLUDES_
 #include "rtwtypes.h"
+#include "zero_crossing_types.h"
 #include "simstruc.h"
 #include "fixedpoint.h"
 #include "rt_logging.h"
@@ -249,6 +255,14 @@
 # define rtmSetNumOutputPorts(rtm, val) ((rtm)->Sizes.numOports = (val))
 #endif
 
+#ifndef rtmGetNumPeriodicContStates
+# define rtmGetNumPeriodicContStates(rtm) ((rtm)->Sizes.numPeriodicContStates)
+#endif
+
+#ifndef rtmSetNumPeriodicContStates
+# define rtmSetNumPeriodicContStates(rtm, val) ((rtm)->Sizes.numPeriodicContStates = (val))
+#endif
+
 #ifndef rtmGetNumSFcnParams
 # define rtmGetNumSFcnParams(rtm)      ((rtm)->Sizes.numSFcnPrms)
 #endif
@@ -367,6 +381,22 @@
 
 #ifndef rtmSetPerTaskSampleHitsPtr
 # define rtmSetPerTaskSampleHitsPtr(rtm, val) ((rtm)->Timing.perTaskSampleHits = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateIndices
+# define rtmGetPeriodicContStateIndices(rtm) ((rtm)->ModelData.periodicContStateIndices)
+#endif
+
+#ifndef rtmSetPeriodicContStateIndices
+# define rtmSetPeriodicContStateIndices(rtm, val) ((rtm)->ModelData.periodicContStateIndices = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateRanges
+# define rtmGetPeriodicContStateRanges(rtm) ((rtm)->ModelData.periodicContStateRanges)
+#endif
+
+#ifndef rtmSetPeriodicContStateRanges
+# define rtmSetPeriodicContStateRanges(rtm, val) ((rtm)->ModelData.periodicContStateRanges = (val))
 #endif
 
 #ifndef rtmGetPrevZCSigState
@@ -1639,7 +1669,7 @@ struct P_ctrl_switch_T_ {
   real_T u_BTd_P6;                     /* Expression: btype
                                         * Referenced by: '<S9>/u_BT,d'
                                         */
-  real_T Saturation1_UpperSat;         /* Expression: 1
+  real_T Saturation1_UpperSat;         /* Expression: 1.8
                                         * Referenced by: '<S9>/Saturation1'
                                         */
   real_T Saturation1_LowerSat;         /* Expression: 0
@@ -1663,7 +1693,7 @@ struct P_ctrl_switch_T_ {
   real_T u_VSP1d_P6;                   /* Expression: btype
                                         * Referenced by: '<S9>/u_VSP1,d'
                                         */
-  real_T Saturation2_UpperSat;         /* Expression: 1
+  real_T Saturation2_UpperSat;         /* Expression: 1.8
                                         * Referenced by: '<S9>/Saturation2'
                                         */
   real_T Saturation2_LowerSat;         /* Expression: 0
@@ -1785,6 +1815,8 @@ struct tag_RTM_ctrl_switch_T {
     void *defaultParam;
     ZCSigState *prevZCSigState;
     real_T *contStates;
+    int_T *periodicContStateIndices;
+    real_T *periodicContStateRanges;
     real_T *derivs;
     void *zcSignalValues;
     void *inputs;
@@ -1806,6 +1838,7 @@ struct tag_RTM_ctrl_switch_T {
     uint32_T checksums[4];
     uint32_T options;
     int_T numContStates;
+    int_T numPeriodicContStates;
     int_T numU;
     int_T numY;
     int_T numSampTimes;
@@ -1872,6 +1905,18 @@ extern B_ctrl_switch_T ctrl_switch_B;
 
 /* Block states (auto storage) */
 extern DW_ctrl_switch_T ctrl_switch_DW;
+
+/*====================*
+ * External functions *
+ *====================*/
+extern ctrl_switch_rtModel *ctrl_switch(void);
+extern void MdlInitializeSizes(void);
+extern void MdlInitializeSampleTimes(void);
+extern void MdlInitialize(void);
+extern void MdlStart(void);
+extern void MdlOutputs(int_T tid);
+extern void MdlUpdate(int_T tid);
+extern void MdlTerminate(void);
 
 /* Real-time Model object */
 extern RT_MODEL_ctrl_switch_T *const ctrl_switch_M;

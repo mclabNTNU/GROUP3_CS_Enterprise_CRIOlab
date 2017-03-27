@@ -1,11 +1,15 @@
 /*
  * ctrl_switch.c
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "ctrl_switch".
  *
- * Model version              : 1.19
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 14:49:29 2015
+ * Model version              : 1.25
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 14:02:52 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -13,6 +17,7 @@
  * Code generation objectives: Unspecified
  * Validation result: Not run
  */
+
 #include "ctrl_switch.h"
 #include "ctrl_switch_private.h"
 
@@ -29,7 +34,7 @@ RT_MODEL_ctrl_switch_T *const ctrl_switch_M = &ctrl_switch_M_;
 /* Model output function */
 static void ctrl_switch_output(void)
 {
-  real_T signal;
+  real_T b_signal;
   real_T rtb_MultiportSwitch_idx_1;
   real_T rtb_MultiportSwitch_idx_2;
   real_T rtb_MultiportSwitch_idx_3;
@@ -44,40 +49,40 @@ static void ctrl_switch_output(void)
   /* % Function that takes in impulse button sigals [0,1] and sends out a  */
   /*  different signal depentent pn which button has been pressed */
   /* '<S10>:1:8' */
-  signal = ctrl_switch_DW.Memory_PreviousInput;
+  b_signal = ctrl_switch_DW.Memory_PreviousInput;
   if (ctrl_switch_B.Cross != 0.0) {
     /* '<S10>:1:10' */
     /* '<S10>:1:11' */
-    signal = 1.0;
+    b_signal = 1.0;
   }
 
   if (ctrl_switch_B.Square != 0.0) {
     /* '<S10>:1:14' */
     /* '<S10>:1:15' */
-    signal = 2.0;
+    b_signal = 2.0;
   }
 
   if (ctrl_switch_B.Circle != 0.0) {
     /* '<S10>:1:18' */
     /* '<S10>:1:19' */
-    signal = 3.0;
+    b_signal = 3.0;
   }
 
   if (ctrl_switch_B.Triangle != 0.0) {
     /* '<S10>:1:22' */
     /* '<S10>:1:23' */
-    signal = 4.0;
+    b_signal = 4.0;
   }
 
   /* '<S10>:1:26' */
-  ctrl_switch_B.switch_signal = signal;
+  ctrl_switch_B.switch_signal = b_signal;
 
   /* End of MATLAB Function: '<S1>/Switch_function' */
 
   /* MultiPortSwitch: '<Root>/Multiport Switch' */
   switch ((int32_T)ctrl_switch_B.switch_signal) {
    case 1:
-    signal = ctrl_switch_B.u_BT;
+    b_signal = ctrl_switch_B.u_BT;
     rtb_MultiportSwitch_idx_1 = ctrl_switch_B.u_VSP1;
     rtb_MultiportSwitch_idx_2 = ctrl_switch_B.u_VSP2;
     rtb_MultiportSwitch_idx_3 = ctrl_switch_B.alpha_VSP1;
@@ -87,7 +92,7 @@ static void ctrl_switch_output(void)
     break;
 
    case 2:
-    signal = ctrl_switch_B.u_BT_i;
+    b_signal = ctrl_switch_B.u_BT_i;
     rtb_MultiportSwitch_idx_1 = ctrl_switch_B.u_VSP1_i;
     rtb_MultiportSwitch_idx_2 = ctrl_switch_B.u_VSP2_c;
     rtb_MultiportSwitch_idx_3 = ctrl_switch_B.alpha_VSP1_b;
@@ -97,7 +102,7 @@ static void ctrl_switch_output(void)
     break;
 
    case 3:
-    signal = ctrl_switch_B.u_BT_c;
+    b_signal = ctrl_switch_B.u_BT_c;
     rtb_MultiportSwitch_idx_1 = ctrl_switch_B.u_VSP1_o;
     rtb_MultiportSwitch_idx_2 = ctrl_switch_B.u_VSP2_m;
     rtb_MultiportSwitch_idx_3 = ctrl_switch_B.alpha_VSP1_g;
@@ -107,7 +112,7 @@ static void ctrl_switch_output(void)
     break;
 
    default:
-    signal = ctrl_switch_B.u_BT_m;
+    b_signal = ctrl_switch_B.u_BT_m;
     rtb_MultiportSwitch_idx_1 = ctrl_switch_B.u_VSP1_c;
     rtb_MultiportSwitch_idx_2 = ctrl_switch_B.u_VSP2_e;
     rtb_MultiportSwitch_idx_3 = ctrl_switch_B.alpha_VSP1_k;
@@ -129,7 +134,7 @@ static void ctrl_switch_output(void)
   /* '<S2>:1:8' */
   /* '<S2>:1:10' */
   /* '<S2>:1:18' */
-  ctrl_switch_B.fault = !((-1.0 <= signal) && (signal <= 1.0) && (0.0 <=
+  ctrl_switch_B.fault = !((-1.0 <= b_signal) && (b_signal <= 1.0) && (0.0 <=
     rtb_MultiportSwitch_idx_1) && (rtb_MultiportSwitch_idx_1 <= 1.0) && (0.0 <=
     rtb_MultiportSwitch_idx_1) && (rtb_MultiportSwitch_idx_1 <= 2.0) &&
     (-3.1415926535897931 <= rtb_MultiportSwitch_idx_3) &&
@@ -137,7 +142,7 @@ static void ctrl_switch_output(void)
     rtb_MultiportSwitch_idx_4) && (rtb_MultiportSwitch_idx_4 <=
     3.1415926535897931) && (-1.0 <= rtb_MultiportSwitch_idx_5) &&
     (rtb_MultiportSwitch_idx_5 <= 1.0) && (-1.0 <= rtb_MultiportSwitch_idx_6) &&
-                          (rtb_MultiportSwitch_idx_6 <= 1.0));
+    (rtb_MultiportSwitch_idx_6 <= 1.0));
 
   /* MATLAB Function: '<S7>/C' */
   /* MATLAB Function 'indicator/C': '<S11>:1' */
@@ -186,12 +191,12 @@ static void ctrl_switch_output(void)
   /* End of Saturate: '<S9>/Saturation4' */
 
   /* Saturate: '<S9>/Saturation' */
-  if (signal > ctrl_switch_P.Saturation_UpperSat) {
+  if (b_signal > ctrl_switch_P.Saturation_UpperSat) {
     ctrl_switch_B.Saturation = ctrl_switch_P.Saturation_UpperSat;
-  } else if (signal < ctrl_switch_P.Saturation_LowerSat) {
+  } else if (b_signal < ctrl_switch_P.Saturation_LowerSat) {
     ctrl_switch_B.Saturation = ctrl_switch_P.Saturation_LowerSat;
   } else {
-    ctrl_switch_B.Saturation = signal;
+    ctrl_switch_B.Saturation = b_signal;
   }
 
   /* End of Saturate: '<S9>/Saturation' */
@@ -277,14 +282,14 @@ static void ctrl_switch_update(void)
 }
 
 /* Model initialize function */
-void ctrl_switch_initialize(void)
+static void ctrl_switch_initialize(void)
 {
   /* InitializeConditions for Memory: '<S1>/Memory' */
   ctrl_switch_DW.Memory_PreviousInput = ctrl_switch_P.Memory_X0;
 }
 
 /* Model terminate function */
-void ctrl_switch_terminate(void)
+static void ctrl_switch_terminate(void)
 {
   /* (no terminate code required) */
 }
@@ -545,7 +550,7 @@ long NIRT_SetValueByDataType(void* ptr,int subindex, double value, int type, int
     return NIRT_SetValueByDataType(ptr,subindex,value,6,Complex);
 
    case 13:
-    //Type is array. Call SetValueByDataType on its contained type
+    //Type is matrix. Call SetValueByDataType on its contained type
     return NIRT_SetValueByDataType(ptr,subindex,value,7,Complex);
 
    case 15:
@@ -1304,8 +1309,8 @@ NI_Task NI_TaskList[] DataSection(".NIVS.tasklist") =
 int NI_NumTasks DataSection(".NIVS.numtasks") = 1;
 static char* NI_CompiledModelName DataSection(".NIVS.compiledmodelname") =
   "ctrl_switch";
-static char* NI_CompiledModelVersion = "1.19";
-static char* NI_CompiledModelDateTime = "Fri Dec 04 14:49:28 2015";
+static char* NI_CompiledModelVersion = "1.25";
+static char* NI_CompiledModelDateTime = "Mon Mar 27 14:02:52 2017";
 static char* NI_builder DataSection(".NIVS.builder") =
   "NI VeriStand 2014.0.0.82 (2014) RTW Build";
 static char* NI_BuilderVersion DataSection(".NIVS.builderversion") =

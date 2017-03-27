@@ -9,11 +9,15 @@
 /*
  * u2pwm_data.c
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "u2pwm".
  *
- * Model version              : 1.24
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 15:19:16 2015
+ * Model version              : 1.29
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 13:58:15 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -26,10 +30,10 @@
 
 /* Block parameters (auto storage) */
 P_u2pwm_T u2pwm_P = {
-  1.9350000000000003,                  /* Variable: BT_u2pwm_gain
+  0.22499999999999998,                 /* Variable: BT_u2pwm_gain
                                         * Referenced by: '<Root>/VPS_Speed_Gain1'
                                         */
-  4.965,                               /* Variable: BT_zero_pwm
+  1.775,                               /* Variable: BT_zero_pwm
                                         * Referenced by: '<Root>/VPS_Power_Offset1'
                                         */
   1.8900000000000001,                  /* Variable: VSP_u2pwm_gain
@@ -61,7 +65,7 @@ P_u2pwm_T u2pwm_P = {
   1.5707963267948966,                  /* Expression: pi/2
                                         * Referenced by: '<Root>/Constant'
                                         */
-  1.0,                                 /* Expression: 1
+  1.8,                                 /* Expression: 1.8
                                         * Referenced by: '<Root>/Saturation4'
                                         */
   -1.0,                                /* Expression: -1
@@ -118,7 +122,7 @@ P_u2pwm_T u2pwm_P = {
   1.5707963267948966,                  /* Expression: pi/2
                                         * Referenced by: '<Root>/Constant1'
                                         */
-  1.0,                                 /* Expression: 1
+  1.8,                                 /* Expression: 1.8
                                         * Referenced by: '<Root>/Saturation3'
                                         */
   -1.0,                                /* Expression: -1
@@ -302,7 +306,7 @@ P_u2pwm_T u2pwm_P = {
   1.0,                                 /* Expression: dtype
                                         * Referenced by: '<Root>/manual override'
                                         */
-  3.0,                                 /* Expression: portnum
+  8.0,                                 /* Expression: portnum
                                         * Referenced by: '<Root>/manual override'
                                         */
   -1.0,                                /* Expression: stime

@@ -9,11 +9,15 @@
 /*
  * ctrl_switch_data.c
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "ctrl_switch".
  *
- * Model version              : 1.19
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 14:49:29 2015
+ * Model version              : 1.25
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 14:02:52 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -743,7 +747,7 @@ P_ctrl_switch_T ctrl_switch_P = {
   0.0,                                 /* Expression: btype
                                         * Referenced by: '<S9>/u_BT,d'
                                         */
-  1.0,                                 /* Expression: 1
+  1.8,                                 /* Expression: 1.8
                                         * Referenced by: '<S9>/Saturation1'
                                         */
   0.0,                                 /* Expression: 0
@@ -767,7 +771,7 @@ P_ctrl_switch_T ctrl_switch_P = {
   0.0,                                 /* Expression: btype
                                         * Referenced by: '<S9>/u_VSP1,d'
                                         */
-  1.0,                                 /* Expression: 1
+  1.8,                                 /* Expression: 1.8
                                         * Referenced by: '<S9>/Saturation2'
                                         */
   0.0,                                 /* Expression: 0

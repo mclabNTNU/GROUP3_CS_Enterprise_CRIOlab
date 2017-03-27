@@ -1,6 +1,9 @@
 % Bow thruster
-BT_min_pwm     = 3.03;
-BT_max_pwm     = 6.90;
+%BT_min_pwm     = 3.03;
+%BT_min_pwm     = (1.55/100)*20;
+%BT_max_pwm     = (2/100)*20;
+BT_min_pwm = 1.55;
+BT_max_pwm = 2;
 BT_u2pwm_gain  = (BT_max_pwm-BT_min_pwm)/2;
 BT_zero_pwm    = BT_min_pwm + BT_u2pwm_gain;
 

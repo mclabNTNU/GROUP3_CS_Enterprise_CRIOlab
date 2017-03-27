@@ -1,11 +1,15 @@
 /*
  * u2pwm.h
  *
+ * Academic License - for use in teaching, academic research, and meeting
+ * course requirements at degree granting institutions only.  Not for
+ * government, commercial, or other organizational use.
+ *
  * Code generation for model "u2pwm".
  *
- * Model version              : 1.24
- * Simulink Coder version : 8.6 (R2014a) 27-Dec-2013
- * C source code generated on : Fri Dec 04 15:19:16 2015
+ * Model version              : 1.29
+ * Simulink Coder version : 8.8 (R2015a) 09-Feb-2015
+ * C source code generated on : Mon Mar 27 13:58:15 2017
  *
  * Target selection: NIVeriStand_VxWorks.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -13,6 +17,7 @@
  * Code generation objectives: Unspecified
  * Validation result: Not run
  */
+
 #ifndef RTW_HEADER_u2pwm_h_
 #define RTW_HEADER_u2pwm_h_
 #include <math.h>
@@ -21,6 +26,7 @@
 #ifndef u2pwm_COMMON_INCLUDES_
 # define u2pwm_COMMON_INCLUDES_
 #include "rtwtypes.h"
+#include "zero_crossing_types.h"
 #include "simstruc.h"
 #include "fixedpoint.h"
 #include "rt_logging.h"
@@ -250,6 +256,14 @@
 # define rtmSetNumOutputPorts(rtm, val) ((rtm)->Sizes.numOports = (val))
 #endif
 
+#ifndef rtmGetNumPeriodicContStates
+# define rtmGetNumPeriodicContStates(rtm) ((rtm)->Sizes.numPeriodicContStates)
+#endif
+
+#ifndef rtmSetNumPeriodicContStates
+# define rtmSetNumPeriodicContStates(rtm, val) ((rtm)->Sizes.numPeriodicContStates = (val))
+#endif
+
 #ifndef rtmGetNumSFcnParams
 # define rtmGetNumSFcnParams(rtm)      ((rtm)->Sizes.numSFcnPrms)
 #endif
@@ -368,6 +382,22 @@
 
 #ifndef rtmSetPerTaskSampleHitsPtr
 # define rtmSetPerTaskSampleHitsPtr(rtm, val) ((rtm)->Timing.perTaskSampleHits = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateIndices
+# define rtmGetPeriodicContStateIndices(rtm) ((rtm)->ModelData.periodicContStateIndices)
+#endif
+
+#ifndef rtmSetPeriodicContStateIndices
+# define rtmSetPeriodicContStateIndices(rtm, val) ((rtm)->ModelData.periodicContStateIndices = (val))
+#endif
+
+#ifndef rtmGetPeriodicContStateRanges
+# define rtmGetPeriodicContStateRanges(rtm) ((rtm)->ModelData.periodicContStateRanges)
+#endif
+
+#ifndef rtmSetPeriodicContStateRanges
+# define rtmSetPeriodicContStateRanges(rtm, val) ((rtm)->ModelData.periodicContStateRanges = (val))
 #endif
 
 #ifndef rtmGetPrevZCSigState
@@ -887,7 +917,7 @@ struct P_u2pwm_T_ {
   real_T Constant_Value;               /* Expression: pi/2
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T Saturation4_UpperSat;         /* Expression: 1
+  real_T Saturation4_UpperSat;         /* Expression: 1.8
                                         * Referenced by: '<Root>/Saturation4'
                                         */
   real_T Saturation4_LowerSat;         /* Expression: -1
@@ -923,7 +953,7 @@ struct P_u2pwm_T_ {
   real_T Constant1_Value;              /* Expression: pi/2
                                         * Referenced by: '<Root>/Constant1'
                                         */
-  real_T Saturation3_UpperSat;         /* Expression: 1
+  real_T Saturation3_UpperSat;         /* Expression: 1.8
                                         * Referenced by: '<Root>/Saturation3'
                                         */
   real_T Saturation3_LowerSat;         /* Expression: -1
@@ -1390,6 +1420,8 @@ struct tag_RTM_u2pwm_T {
     void *defaultParam;
     ZCSigState *prevZCSigState;
     real_T *contStates;
+    int_T *periodicContStateIndices;
+    real_T *periodicContStateRanges;
     real_T *derivs;
     void *zcSignalValues;
     void *inputs;
@@ -1411,6 +1443,7 @@ struct tag_RTM_u2pwm_T {
     uint32_T checksums[4];
     uint32_T options;
     int_T numContStates;
+    int_T numPeriodicContStates;
     int_T numU;
     int_T numY;
     int_T numSampTimes;
@@ -1477,6 +1510,18 @@ extern B_u2pwm_T u2pwm_B;
 
 /* Block states (auto storage) */
 extern DW_u2pwm_T u2pwm_DW;
+
+/*====================*
+ * External functions *
+ *====================*/
+extern u2pwm_rtModel *u2pwm(void);
+extern void MdlInitializeSizes(void);
+extern void MdlInitializeSampleTimes(void);
+extern void MdlInitialize(void);
+extern void MdlStart(void);
+extern void MdlOutputs(int_T tid);
+extern void MdlUpdate(int_T tid);
+extern void MdlTerminate(void);
 
 /* Real-time Model object */
 extern RT_MODEL_u2pwm_T *const u2pwm_M;
