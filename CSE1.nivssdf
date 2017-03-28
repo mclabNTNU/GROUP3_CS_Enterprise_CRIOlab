@@ -10,7 +10,7 @@
 				<String>CSE1</String>
 			</Property>
 			<Property Name="Version">
-				<String>1.0.0.317</String>
+				<String>1.0.0.331</String>
 			</Property>
 			<Property Name="Creator">
 				<String />
@@ -1803,7 +1803,7 @@
 									<I32>127317</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3573453919.4115529</Double>
+									<Double>3573519952.2662973</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -3175,7 +3175,7 @@
 									<I32>173033</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3573460981.7609696</Double>
+									<Double>3573519952.4664927</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -5350,10 +5350,10 @@
 									<Double>10000</Double>
 								</Property>
 								<Property Name="DLL Size">
-									<I32>302143</I32>
+									<I32>328003</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3573465210.7586112</Double>
+									<Double>3573536332.0308871</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -5397,7 +5397,7 @@
 										<ForceDownload>false</ForceDownload>
 										<RTDestination>c:\ni-rt\system\ctrl_student_HIL.out</RTDestination>
 										<SupportedTarget>VxWorks</SupportedTarget>
-										<MD5>84614be7a0c71d5a57224c3eeeb78347</MD5>
+										<MD5>1dc9cf5a24baa2956e949cdd6fa5fb79</MD5>
 									</DependentFile>
 								</Property>
 								<Property Name="GlobalParameterScopes">
@@ -6540,7 +6540,7 @@
 												<String>SurgeObserver /u_hat</String>
 											</Property>
 											<Property Name="Index">
-												<I32>71</I32>
+												<I32>85</I32>
 											</Property>
 										</Properties>
 										<Errors />
@@ -6623,7 +6623,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/alpha_VSP2</String>
 													</Property>
 													<Property Name="Index">
-														<I32>73</I32>
+														<I32>87</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6638,7 +6638,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/omega_VSP1</String>
 													</Property>
 													<Property Name="Index">
-														<I32>74</I32>
+														<I32>88</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6653,7 +6653,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/omega_VSP2</String>
 													</Property>
 													<Property Name="Index">
-														<I32>75</I32>
+														<I32>89</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6668,7 +6668,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/alpha_VSP1</String>
 													</Property>
 													<Property Name="Index">
-														<I32>76</I32>
+														<I32>90</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6683,7 +6683,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/u_BT</String>
 													</Property>
 													<Property Name="Index">
-														<I32>77</I32>
+														<I32>91</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6698,7 +6698,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/u_VSP1</String>
 													</Property>
 													<Property Name="Index">
-														<I32>78</I32>
+														<I32>92</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6713,7 +6713,7 @@
 														<String>tau to real ship (only use in MCLab)/To thruster of real ship/u/u_VSP2</String>
 													</Property>
 													<Property Name="Index">
-														<I32>79</I32>
+														<I32>93</I32>
 													</Property>
 												</Properties>
 												<Errors />
@@ -6729,7 +6729,7 @@
 													<String>tau to real ship (only use in MCLab)/To thruster of real ship/control input u exceeds bounds</String>
 												</Property>
 												<Property Name="Index">
-													<I32>72</I32>
+													<I32>86</I32>
 												</Property>
 											</Properties>
 											<Errors />
@@ -6882,6 +6882,231 @@
 										</Property>
 										<Property Name="Index">
 											<I32>70</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="tau_psi1" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>tau_psi1</String>
+										</Property>
+										<Property Name="Index">
+											<I32>71</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="tau_x1" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>tau_x1</String>
+										</Property>
+										<Property Name="Index">
+											<I32>72</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="tau_y1" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>tau_y1</String>
+										</Property>
+										<Property Name="Index">
+											<I32>73</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="dtot_nu_psi" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>dtot_nu_psi</String>
+										</Property>
+										<Property Name="Index">
+											<I32>74</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="dtot_nu_x" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>dtot_nu_x</String>
+										</Property>
+										<Property Name="Index">
+											<I32>75</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="dtot_nu_y" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>dtot_nu_y</String>
+										</Property>
+										<Property Name="Index">
+											<I32>76</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="m_alpha_1_dot_psi" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>m_alpha_1_dot_psi</String>
+										</Property>
+										<Property Name="Index">
+											<I32>77</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="m_alpha_1_dot_x" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>m_alpha_1_dot_x</String>
+										</Property>
+										<Property Name="Index">
+											<I32>78</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="m_alpha_1_dot_y" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>m_alpha_1_dot_y</String>
+										</Property>
+										<Property Name="Index">
+											<I32>79</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="K_2_z_2_psi" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>K_2_z_2_psi</String>
+										</Property>
+										<Property Name="Index">
+											<I32>80</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="K_2_z_2_x" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>K_2_z_2_x</String>
+										</Property>
+										<Property Name="Index">
+											<I32>81</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="K_2_z_2_y" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>K_2_z_2_y</String>
+										</Property>
+										<Property Name="Index">
+											<I32>82</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="z_1_psi" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>z_1_psi</String>
+										</Property>
+										<Property Name="Index">
+											<I32>83</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="z_1_x" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>z_1_x</String>
+										</Property>
+										<Property Name="Index">
+											<I32>84</I32>
+										</Property>
+									</Properties>
+									<Errors />
+									<DefaultValue>
+										<Elem>0</Elem>
+									</DefaultValue>
+								</Channel>
+								<Channel Name="z_1_y" TypeGUID="03D3B995-1485-13A6-56ABA0860ADF91DF" RowDim="1" ColDim="1" Units="" BitFields="5">
+									<Description />
+									<Properties>
+										<Property Name="Model Path">
+											<String>z_1_y</String>
+										</Property>
+										<Property Name="Index">
+											<I32>94</I32>
 										</Property>
 									</Properties>
 									<Errors />
