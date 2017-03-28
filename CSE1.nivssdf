@@ -10,7 +10,7 @@
 				<String>CSE1</String>
 			</Property>
 			<Property Name="Version">
-				<String>1.0.0.315</String>
+				<String>1.0.0.317</String>
 			</Property>
 			<Property Name="Creator">
 				<String />
@@ -5350,10 +5350,10 @@
 									<Double>10000</Double>
 								</Property>
 								<Property Name="DLL Size">
-									<I32>301679</I32>
+									<I32>302143</I32>
 								</Property>
 								<Property Name="DLL Timestamp">
-									<Double>3573463316.4713745</Double>
+									<Double>3573465210.7586112</Double>
 								</Property>
 								<Property Name="Decimation">
 									<I32>1</I32>
@@ -5397,7 +5397,7 @@
 										<ForceDownload>false</ForceDownload>
 										<RTDestination>c:\ni-rt\system\ctrl_student_HIL.out</RTDestination>
 										<SupportedTarget>VxWorks</SupportedTarget>
-										<MD5>c70ae1b5bb9a98e1fff580c2e5e8fb1f</MD5>
+										<MD5>84614be7a0c71d5a57224c3eeeb78347</MD5>
 									</DependentFile>
 								</Property>
 								<Property Name="GlobalParameterScopes">
