@@ -70,6 +70,20 @@
 <outport> id = "-1" name = "tau_psi" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "tau_x" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "tau_y" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "tau_psi1" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "tau_x1" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "tau_y1" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "dtot_nu_psi" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "dtot_nu_x" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "dtot_nu_y" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "m_alpha_1_dot_psi" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "m_alpha_1_dot_x" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "m_alpha_1_dot_y" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "K_2_z_2_psi" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "K_2_z_2_x" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "K_2_z_2_y" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "z_1_psi" width = "1" datatype = "17"</outport>
+<outport> id = "-1" name = "z_1_x" width = "1" datatype = "17"</outport>
 <outport> id = "-1" name = "SurgeObserver /u_hat" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "tau to real ship (only use in MCLab)/To thruster of real ship/control input u exceeds bounds" width = "1" datatype = "8"</outport>
 <outport> id = "-1" name = "tau to real ship (only use in MCLab)/To thruster of real ship/u/alpha_VSP2" width = "1" datatype = "0"</outport>
@@ -79,4 +93,5 @@
 <outport> id = "-1" name = "tau to real ship (only use in MCLab)/To thruster of real ship/u/u_BT" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "tau to real ship (only use in MCLab)/To thruster of real ship/u/u_VSP1" width = "1" datatype = "0"</outport>
 <outport> id = "-1" name = "tau to real ship (only use in MCLab)/To thruster of real ship/u/u_VSP2" width = "1" datatype = "0"</outport>
+<outport> id = "-1" name = "z_1_y" width = "1" datatype = "17"</outport>
 </portlist>
